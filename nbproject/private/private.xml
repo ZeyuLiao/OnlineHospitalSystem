@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Users/ziyu/Documents/GitHub/OnlineHospitalSystem/src/icon/heroicons-ui_100.png</file>
             <file>file:/Users/ziyu/Documents/GitHub/OnlineHospitalSystem/src/dao/UserDao.java</file>
-            <file>file:/Users/ziyu/Documents/GitHub/OnlineHospitalSystem/src/ui/Entrance.java</file>
+            <file>file:/Users/ziyu/Documents/GitHub/OnlineHospitalSystem/src/ui/MainMenu.java</file>
+            <file>file:/Users/ziyu/Documents/GitHub/OnlineHospitalSystem/src/model/Hospital.java</file>
         </group>
     </open-files>
 </project-private>
