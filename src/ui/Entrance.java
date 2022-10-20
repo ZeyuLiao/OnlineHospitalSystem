@@ -4,6 +4,7 @@
  */
 package ui;
 
+import dao.UserDao;
 import static java.awt.Image.SCALE_DEFAULT;
 import javax.swing.ImageIcon;
 import javax.swing.UIManager;
@@ -163,6 +164,8 @@ public class Entrance extends javax.swing.JFrame {
                 new Entrance().setVisible(true);
             }
         });
+//        UserDao ud = new UserDao();
+//        ud.test();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
