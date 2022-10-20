@@ -101,12 +101,12 @@ public class MainMenu extends javax.swing.JFrame {
      */
     public void MainMenu() {
         /* Set the Nimbus look and feel */
-        try{
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-            }catch(Exception e){
-            System.out.println("Error in theme");
-            e.printStackTrace();
-            }
+//        try{
+//            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+//            }catch(Exception e){
+//            System.out.println("Error in theme");
+//            e.printStackTrace();
+//            }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
