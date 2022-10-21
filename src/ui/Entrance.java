@@ -168,9 +168,7 @@ public class Entrance extends javax.swing.JFrame {
         });
 //        UserDao ud = new UserDao();
 //        ud.test();
-        PatientDao pDao = new PatientDao();
-        int id = 1;
-        Patient p = pDao.getPatientById(1);
+
 
         
     }
