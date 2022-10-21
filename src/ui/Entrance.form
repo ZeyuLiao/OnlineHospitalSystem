@@ -27,12 +27,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel2" alignment="1" pref="1016" max="32767" attributes="0"/>
+          <Component id="jPanel2" alignment="1" pref="1000" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel2" alignment="1" pref="601" max="32767" attributes="0"/>
+          <Component id="jPanel2" alignment="1" pref="600" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -83,7 +83,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="540" y="10" width="470" height="580"/>
+              <AbsoluteConstraints x="530" y="10" width="460" height="580"/>
             </Constraint>
           </Constraints>
 
@@ -210,7 +210,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelLogo">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ImageIcon logoHospital = new ImageIcon(&quot;src//Icon//Logo.png&quot;);&#xa;logoHospital.setImage(logoHospital.getImage().getScaledInstance(jLabelLogo.getWidth(),jLabelLogo.getHeight(),SCALE_DEFAULT));&#xa;jLabelLogo.setIcon(logoHospital);"/>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ImageIcon logoHospital = new ImageIcon(&quot;src//image//Logo.png&quot;);&#xa;logoHospital.setImage(logoHospital.getImage().getScaledInstance(jLabelLogo.getWidth(),jLabelLogo.getHeight(),SCALE_DEFAULT));&#xa;jLabelLogo.setIcon(logoHospital);"/>
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -222,7 +222,7 @@
         </Container>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ImageIcon bgDoctor = new ImageIcon(&quot;src//Icon//doctors.png&quot;);&#xa;bgDoctor.setImage(bgDoctor.getImage().getScaledInstance(jLabel1.getWidth(),jLabel1.getHeight(),SCALE_DEFAULT));&#xa;jLabel1.setIcon(bgDoctor);"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ImageIcon bgDoctor = new ImageIcon(&quot;src//image//doctors.png&quot;);&#xa;bgDoctor.setImage(bgDoctor.getImage().getScaledInstance(jLabel1.getWidth(),jLabel1.getHeight(),SCALE_DEFAULT));&#xa;jLabel1.setIcon(bgDoctor);"/>
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

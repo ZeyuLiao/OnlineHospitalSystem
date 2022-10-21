@@ -117,15 +117,15 @@ public class Entrance extends javax.swing.JFrame {
         jLabel6.setBounds(169, 514, 185, 17);
         jPanel1.add(jLabelLogo);
         jLabelLogo.setBounds(80, 90, 340, 70);
-        ImageIcon logoHospital = new ImageIcon("src//Icon//Logo.png");
+        ImageIcon logoHospital = new ImageIcon("src//image//Logo.png");
         logoHospital.setImage(logoHospital.getImage().getScaledInstance(jLabelLogo.getWidth(),jLabelLogo.getHeight(),SCALE_DEFAULT));
         jLabelLogo.setIcon(logoHospital);
 
         jPanel2.add(jPanel1);
-        jPanel1.setBounds(540, 10, 470, 580);
+        jPanel1.setBounds(530, 10, 460, 580);
         jPanel2.add(jLabel1);
         jLabel1.setBounds(0, 0, 530, 540);
-        ImageIcon bgDoctor = new ImageIcon("src//Icon//doctors.png");
+        ImageIcon bgDoctor = new ImageIcon("src//image//doctors.png");
         bgDoctor.setImage(bgDoctor.getImage().getScaledInstance(jLabel1.getWidth(),jLabel1.getHeight(),SCALE_DEFAULT));
         jLabel1.setIcon(bgDoctor);
 
@@ -133,11 +133,11 @@ public class Entrance extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1016, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
 
         pack();
@@ -145,7 +145,8 @@ public class Entrance extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+        MainMenu menu = new MainMenu();
+        menu.MainMenu();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**     * @param args the command line arguments
