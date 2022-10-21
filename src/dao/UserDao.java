@@ -10,20 +10,14 @@ import java.sql.*;
  * @author Ruolin
  */
 public class UserDao {
-    	//用户的添加与删除
 
     private Connection conn = null;
-     // MySQL 8.0 以下版本 - JDBC 驱动名及数据库 URL
-//    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-//    static final String DB_URL = "jdbc:mysql://localhost:3306/RUNOOB";
- 
-    // MySQL 8.0 以上版本 - JDBC 驱动名及数据库 URL
+
+    // MySQL 8.0  - JDBC Driver+Database URL
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";  
     //localhost:3306/+database name
     static final String DB_URL = "jdbc:mysql://localhost:3306/neu?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
  
- 
-    // 数据库的用户名与密码，需要根据自己的设置
     static final String USER = "root";
     static final String PASS = "123";
 	
