@@ -4,10 +4,11 @@
  */
 package ui;
 
-import dao.UserDao;
+import dao.*;
 import static java.awt.Image.SCALE_DEFAULT;
 import javax.swing.ImageIcon;
 import javax.swing.UIManager;
+import model.Patient;
 
 /**
  *
@@ -151,15 +152,15 @@ public class Entrance extends javax.swing.JFrame {
 
     /**     * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws Exception {
         /* Set the Nimbus look and feel */
-        try{
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-            }catch(Exception e){
-            System.out.println("主题出错");
-            e.printStackTrace();
-            }
-        /* Create and display the form */
+        // try{
+        //     UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        //     }catch(Exception e){
+        //     System.out.println("主题出错");
+        //     e.printStackTrace();
+        //     }
+        // /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Entrance().setVisible(true);
@@ -167,6 +168,9 @@ public class Entrance extends javax.swing.JFrame {
         });
         UserDao ud = new UserDao();
         ud.test();
+
+
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
