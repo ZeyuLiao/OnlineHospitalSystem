@@ -9,5 +9,8 @@ package model;
  * @author ziyu
  */
 public class Hospital {
+    public int hospitalId;
+    public String hospitalName;
+    public String location;
     
 }
