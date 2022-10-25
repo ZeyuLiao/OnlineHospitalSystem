@@ -25,7 +25,6 @@ public class MainMenu extends javax.swing.JFrame {
         PatientPage pap = new PatientPage();
         jTabbedPane1.addTab("", new javax.swing.ImageIcon("src//icon//icon_home.png"), hp);
         jTabbedPane1.addTab("", new javax.swing.ImageIcon("src//icon//icon_patient.png"), pap);
-        jTabbedPane1.addTab("", new javax.swing.ImageIcon("src//icon//icon_home.png"), hp);
         jTabbedPane1.addTab("", new javax.swing.ImageIcon("src//icon//icon_profile.png"), pp);
         
     }
@@ -64,6 +63,7 @@ public class MainMenu extends javax.swing.JFrame {
         );
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane1.setAlignmentX(1.0F);
         jTabbedPane1.setAlignmentY(1.0F);
         jTabbedPane1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -83,11 +83,11 @@ public class MainMenu extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelHead, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
+                .addComponent(jPanelHead, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE))
         );
 
         jTabbedPane1.getAccessibleContext().setAccessibleName("");
