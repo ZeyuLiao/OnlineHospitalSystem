@@ -251,12 +251,14 @@ public class PatientCrud extends javax.swing.JPanel {
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
         // TODO add your handling code here:
+        AddPatient add = new AddPatient();
+        
         
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButtonViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonViewActionPerformed
         // TODO add your handling code here:
-                int selectedIndex = jTablePatient.getSelectedRow();
+        int selectedIndex = jTablePatient.getSelectedRow();
         if(selectedIndex < 0){
             JOptionPane.showMessageDialog(this,"Please select a row to view");
             return;
