@@ -1,11 +1,11 @@
 CREATE TABLE encounter (
-	EncounterId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	DoctorId INT NOT NULL,
-	PatientId INT NOT NULL,
-	State boolean,
-	VitalSignId INT,
-	Symptom VARCHAR ( 100 ),
-	Diagnosis VARCHAR ( 100 ),
-	StartDate DATE,
-EndDate DATE 
+	encounter_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	doctor_id INT NOT NULL,
+	patient_id INT NOT NULL,
+	state boolean,
+	vitalsign_id INT,
+	symptom VARCHAR ( 100 ),
+	diagnosis VARCHAR ( 100 ),
+	start_date DATE,
+	end_date DATE 
 );
