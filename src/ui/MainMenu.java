@@ -6,7 +6,7 @@ package ui;
 
 import ui.doctors.ProfilePage;
 import ui.doctors.HomePage;
-import ui.doctors.PatientPage;
+import ui.doctors.PatientPage1;
 import javax.swing.UIManager;
 
 /**
@@ -22,7 +22,7 @@ public class MainMenu extends javax.swing.JFrame {
         initComponents();
         HomePage hp = new HomePage();
         ProfilePage pp = new ProfilePage();
-        PatientPage pap = new PatientPage();
+        PatientPage1 pap = new PatientPage1();
         jTabbedPane1.addTab("", new javax.swing.ImageIcon("src//icon//icon_home.png"), hp);
         jTabbedPane1.addTab("", new javax.swing.ImageIcon("src//icon//icon_patient.png"), pap);
         jTabbedPane1.addTab("", new javax.swing.ImageIcon("src//icon//icon_home.png"), hp);
@@ -46,6 +46,7 @@ public class MainMenu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setLocation(new java.awt.Point(300, 150));
+        setPreferredSize(new java.awt.Dimension(1000, 600));
 
         jPanelHead.setBackground(new java.awt.Color(255, 255, 255));
         jPanelHead.setLayout(null);
@@ -64,6 +65,7 @@ public class MainMenu extends javax.swing.JFrame {
         );
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane1.setAlignmentX(1.0F);
         jTabbedPane1.setAlignmentY(1.0F);
         jTabbedPane1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N

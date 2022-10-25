@@ -11,14 +11,14 @@ package model;
 public class Patient extends User {
     private int patientId;
     private String DOB;
-    private String communityName;
+    private String address;
 
-    public String getCommunityName() {
-        return communityName;
+    public String getAddress() {
+        return address;
     }
 
-    public void setCommunityName(String communityName) {
-        this.communityName = communityName;
+    public void setAddress(String address) {
+        this.address = address;
     }
     
     public String getDOB() {
@@ -40,7 +40,7 @@ public class Patient extends User {
     @Override
     public String toString(){
         return "id:"+this.getPatientId()+",name:"+this.getName()+
-                ",phone:"+this.getPhoneNumber()+",communityName:"+this.getCommunityName()+",DOB:"+
+                ",phone:"+this.getPhoneNumber()+",address:"+this.getAddress()+",DOB:"+
                 this.getDOB();
     }
 
