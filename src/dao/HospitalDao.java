@@ -8,7 +8,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import model.Hospital;
+
 
 /**
  *
@@ -43,14 +46,40 @@ public class HospitalDao {
 	if (rs.next()){
             h = new Hospital();
             h.setHospitalId(id);
-            h.setAddress(rs.getString("Name"));
-            h.setName(rs.getString("PhoneNumber"));
-            h.setPhoneNumber(rs.getString("DOB"));
-            h.setPhoneNumber(rs.getString("Address"));
+            h.setHospitalName(rs.getString("hospital_name"));
+            h.setCommunity(rs.getString("hospital_community_name"));
+    
 	}
 //        System.out.print(p.toString());
 	closeConnection();
-	return p;
+	return h;
+    }
+      
+      public ArrayList<Hospital> getAllHospital() throws Exception{
+		
+        ArrayList<Hospital> hList = new ArrayList<>();
+        initConnection();
+        String sql = "SELECT * FROM HospitalList";
+        Statement stat = conn.createStatement();
+        ResultSet rs = stat.executeQuery(sql);
+        while(rs.next()){
+            Hospital hospital = new Hospital();
+            hospital.setHospitalId(rs.getInt("hospital_id"));
+            hospital.setHospitalName(rs.getString("hospital_name"));
+            hospital.setCommunity(rs.getString("hospital_community_name"));
+            hList.add(hospital);
+        }
+        closeConnection();
+        return hList;	
+    }
+      
+      
+      
+      
+      
+      
+          public void closeConnection() throws Exception{
+        conn.close();
     }
     
 }
