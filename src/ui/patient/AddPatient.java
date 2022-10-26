@@ -5,7 +5,8 @@
 package ui.patient;
 
 import dao.PatientDao;
-import javax.swing.JOptionPane;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Patient;
 
 /**
@@ -19,7 +20,6 @@ public class AddPatient extends javax.swing.JPanel {
      */
     public AddPatient() {
         initComponents();
-        this.setVisible(true);
     }
 
     /**
@@ -39,20 +39,18 @@ public class AddPatient extends javax.swing.JPanel {
         jTextFieldName = new javax.swing.JTextField();
         jTextFieldPhoneNumber = new javax.swing.JTextField();
         jTextFieldDOB = new javax.swing.JTextField();
+        jTextFieldCName = new javax.swing.JTextField();
         jButtonSubmit = new javax.swing.JButton();
         jLabelName = new javax.swing.JLabel();
-        jComboBoxCName = new javax.swing.JComboBox<>();
-        jLabelPhoneNumber = new javax.swing.JLabel();
-        jLabelDOB = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         jLabel1.setText("Name:");
 
         jLabel4.setText("Community Name:");
 
-        jLabel3.setText("Year of Birth (yyyy):");
+        jLabel3.setText("DOB:");
 
-        jLabel5.setText("Phone Number:");
+        jLabel5.setText("PhoneNumber:");
 
         jButtonSubmit.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 14)); // NOI18N
         jButtonSubmit.setText("Submit");
@@ -65,8 +63,6 @@ public class AddPatient extends javax.swing.JPanel {
 
         jLabelName.setForeground(new java.awt.Color(255, 0, 0));
 
-        jComboBoxCName.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Toronto Downtown", "North York", "Markham", "Scarborough" }));
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -74,25 +70,23 @@ public class AddPatient extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldPhoneNumber)
+                            .addComponent(jTextFieldDOB)
+                            .addComponent(jTextFieldCName, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabelName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldName, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabelPhoneNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldPhoneNumber)
-                            .addComponent(jTextFieldDOB)
-                            .addComponent(jButtonSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxCName, 0, 255, Short.MAX_VALUE)
-                            .addComponent(jLabelDOB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jTextFieldName, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE))))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -108,19 +102,15 @@ public class AddPatient extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextFieldPhoneNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(48, 48, 48)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
-                .addComponent(jLabelDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBoxCName, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
-                .addGap(35, 35, 35)
+                .addGap(43, 43, 43)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldCName, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
                 .addComponent(jButtonSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -155,50 +145,21 @@ public class AddPatient extends javax.swing.JPanel {
         // TODO add your handling code here:
         Patient p = new Patient();
         boolean flag = true;
-        String name = jTextFieldName.getText();
-        String DOB = jTextFieldDOB.getText();
-        String phoneNumber = jTextFieldPhoneNumber.getText();
-        if(name.isEmpty()){
+        if(jTextFieldName.getText().isEmpty()){
             jLabelName.setText("Name is empty");
             flag = false;
         }
-        if(DOB.isEmpty()){
-            jLabelDOB.setText("Year of birth is empty");
+        if(jTextFieldName.getText().isEmpty()){
+            jLabelName.setText("Name is empty");
             flag = false;
-        }else if(DOB.length()!=4){
-            jLabelDOB.setText("Wrong fommat Year of birth");
-            flag = false;
-        }else{
-            for(char c:DOB.toCharArray()){
-                if(c>'9' || c<'0'){
-                    jLabelDOB.setText("Wrong Year of birth");
-                    flag = false;
-                }
-            }
         }
-        if(phoneNumber.isEmpty()){
-            jLabelPhoneNumber.setText("Phone Number is empty");
-            flag = false;
-        }else{
-            for(char c:phoneNumber.toCharArray()){
-                if(c>'9' || c<'0'){
-                    jLabelDOB.setText("Wrong Phone Number");
-                    flag = false;
-                }
-            }
-        }
-        if(flag==false){
-            JOptionPane.showMessageDialog(this,"Wrong Information");
-            return;
-        }
-        p.setName(name);
-        p.setDOB(DOB);
-        p.setCommunityName(jComboBoxCName.getSelectedItem().toString());
-        p.setPhoneNumber(phoneNumber);
+        p.setName(jTextFieldName.getText());
+        p.setDOB(jTextFieldDOB.getText());
+        p.setCommunityName(jTextFieldCName.getText());
+        p.setPhoneNumber(jTextFieldPhoneNumber.getText());
         PatientDao pDao = new PatientDao();
         try {
             pDao.addPatient(p);
-            JOptionPane.showMessageDialog(this,"Success");
         } catch (Exception ex) {
             //Logger.getLogger(AddPatient.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();
@@ -208,16 +169,14 @@ public class AddPatient extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonSubmit;
-    private javax.swing.JComboBox<String> jComboBoxCName;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabelDOB;
     private javax.swing.JLabel jLabelName;
-    private javax.swing.JLabel jLabelPhoneNumber;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextFieldCName;
     private javax.swing.JTextField jTextFieldDOB;
     private javax.swing.JTextField jTextFieldName;
     private javax.swing.JTextField jTextFieldPhoneNumber;

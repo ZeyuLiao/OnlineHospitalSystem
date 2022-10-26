@@ -99,8 +99,9 @@ public class PatientDao {
 
         ArrayList<Patient> pList = new ArrayList<>();
         initConnection();
-        String sql = "SELECT * FROM patient WHERE community_name LIKE " +"'"+communityName+"'";
+        String sql = "SELECT * FROM patient WHERE community_name=?";
         PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, communityName);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
             Patient patient = new Patient();
@@ -109,7 +110,6 @@ public class PatientDao {
             patient.setPhoneNumber(rs.getString("phone_number"));
             patient.setDOB(rs.getString("DOB"));
             patient.setCommunityName(rs.getString("community_name"));
-            pList.add(patient);
             }
         closeConnection();
 
@@ -186,7 +186,7 @@ public class PatientDao {
 
         boolean res = true;
         initConnection();
-        String sql = "DELETE FROM Patient WHERE patient_id='" + patientId + "'";
+        String sql = "DELETE FROM Patient WHERE id='" + patientId + "'";
 
         try {
             Statement stat = conn.createStatement();
@@ -205,7 +205,7 @@ public class PatientDao {
         boolean res = true;
         initConnection();
         String sql = "UPDATE Patient SET name='" + patient.getName() + "', phone_number='" + patient.getPhoneNumber() 
-                + "', DOB='" + patient.getDOB() + "', community_name='" + patient.getCommunityName() + "'" + "where patient_id = "+ patient.getPatientId() ;
+                + "', DOB='" + patient.getDOB() + "', community_name='" + patient.getCommunityName() + "'";
         try {
             Statement stat = conn.createStatement();
             stat.executeUpdate(sql);
