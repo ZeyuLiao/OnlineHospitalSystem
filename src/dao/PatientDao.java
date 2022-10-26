@@ -36,17 +36,17 @@ public class PatientDao {
 		
 	Patient p = null;
 	initConnection();
-	String sql = "SELECT * FROM Patient WHERE patientId=?";
+	String sql = "SELECT * FROM Patient WHERE patient_id=?";
 	PreparedStatement ps = conn.prepareStatement(sql);
 	ps.setString(1, id+"");
 	ResultSet rs = ps.executeQuery();
 	if (rs.next()){
             p = new Patient();
             p.setPatientId(id);
-            p.setAddress(rs.getString("Name"));
-            p.setName(rs.getString("PhoneNumber"));
-            p.setPhoneNumber(rs.getString("DOB"));
-            p.setPhoneNumber(rs.getString("Address"));
+            p.setCommunityName(rs.getString("community_name"));
+            p.setName(rs.getString("name"));
+            p.setDOB(rs.getString("DOB"));
+            p.setPhoneNumber(rs.getString("phone_number"));
 	}
 //        System.out.print(p.toString());
 	closeConnection();
@@ -62,11 +62,11 @@ public class PatientDao {
         ResultSet rs = stat.executeQuery(sql);
         while(rs.next()){
             Patient patient = new Patient();
-            patient.setPatientId(rs.getInt("PatientId"));
-            patient.setName(rs.getString("Name"));
-            patient.setPhoneNumber(rs.getString("PhoneName"));
+            patient.setPatientId(rs.getInt("patient_id"));
+            patient.setName(rs.getString("name"));
+            patient.setPhoneNumber(rs.getString("phone_number"));
             patient.setDOB(rs.getString("DOB"));
-            patient.setAddress(rs.getString("Address"));
+            patient.setCommunityName(rs.getString("community_name"));
             pList.add(patient);
         }
         closeConnection();
@@ -77,17 +77,17 @@ public class PatientDao {
 
         ArrayList<Patient> pList = new ArrayList<>();
         initConnection();
-        String sql = "SELECT * FROM Patient WHERE Name=?";
+        String sql = "SELECT * FROM Patient WHERE name=?";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, name);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
             Patient patient = new Patient();
-            patient.setPatientId(rs.getInt("PatientId"));
-            patient.setName(rs.getString("Name"));
-            patient.setPhoneNumber(rs.getString("PhoneName"));
+            patient.setPatientId(rs.getInt("patient_id"));
+            patient.setName(rs.getString("name"));
+            patient.setPhoneNumber(rs.getString("phone_number"));
             patient.setDOB(rs.getString("DOB"));
-            patient.setAddress(rs.getString("Address"));
+            patient.setCommunityName(rs.getString("community_name"));
             pList.add(patient);
         }
         closeConnection();
@@ -95,21 +95,21 @@ public class PatientDao {
         return pList;
     }
 
-    public ArrayList<Patient> getPatientByAddress(String address) throws Exception{
+    public ArrayList<Patient> getPatientByAddress(String communityName) throws Exception{
 
         ArrayList<Patient> pList = new ArrayList<>();
         initConnection();
-        String sql = "SELECT * FROM patient WHERE Address=?";
+        String sql = "SELECT * FROM patient WHERE community_name LIKE " +"'"+communityName+"'";
         PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setString(1, address);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
             Patient patient = new Patient();
-            patient.setPatientId(rs.getInt("PatientId"));
-            patient.setName(rs.getString("Name"));
-            patient.setPhoneNumber(rs.getString("PhoneName"));
+            patient.setPatientId(rs.getInt("patient_id"));
+            patient.setName(rs.getString("name"));
+            patient.setPhoneNumber(rs.getString("phone_number"));
             patient.setDOB(rs.getString("DOB"));
-            patient.setAddress(rs.getString("Address"));
+            patient.setCommunityName(rs.getString("community_name"));
+            pList.add(patient);
             }
         closeConnection();
 
@@ -125,11 +125,11 @@ public class PatientDao {
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
             Patient patient = new Patient();
-            patient.setPatientId(rs.getInt("PatientId"));
-            patient.setName(rs.getString("Name"));
-            patient.setPhoneNumber(rs.getString("PhoneName"));
+            patient.setPatientId(rs.getInt("patient_id"));
+            patient.setName(rs.getString("name"));
+            patient.setPhoneNumber(rs.getString("phone_number"));
             patient.setDOB(rs.getString("DOB"));
-            patient.setAddress(rs.getString("Address"));
+            patient.setCommunityName(rs.getString("community_name"));
             pList.add(patient);
         }
         closeConnection();
@@ -141,7 +141,7 @@ public class PatientDao {
 		
         ArrayList<Patient> pList = new ArrayList<>();
         initConnection();
-        String sql = "SELECT * FROM Patient WHERE PhoneNumber=?";
+        String sql = "SELECT * FROM Patient WHERE phone_number=?";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, phoneNumber);
         ResultSet rs = ps.executeQuery();
@@ -149,11 +149,11 @@ public class PatientDao {
         //must have while(rs.next()){}
         while(rs.next()){
             Patient patient = new Patient();
-            patient.setPatientId(rs.getInt("PatientId"));
-            patient.setName(rs.getString("Name"));
-            patient.setPhoneNumber(rs.getString("PhoneNumber"));
+            patient.setPatientId(rs.getInt("patient_id"));
+            patient.setName(rs.getString("name"));
+            patient.setPhoneNumber(rs.getString("phone_umber"));
             patient.setDOB(rs.getString("DOB"));
-            patient.setAddress(rs.getString("Address"));
+            patient.setCommunityName(rs.getString("community_name"));
             pList.add(patient);
         }
 
@@ -166,9 +166,9 @@ public class PatientDao {
 
         boolean res = true;
         initConnection();
-        String sql = "INSERT INTO Patient( Name,PhoneNumber,DOB,Address ) "
+        String sql = "INSERT INTO Patient( name,phone_number,DOB,community_name ) "
                         + "VALUES('" + patient.getName() + "','" + patient.getPhoneNumber() + 
-                        "','" + patient.getDOB() + "','" + patient.getAddress() + "')";
+                        "','" + patient.getDOB() + "','" + patient.getCommunityName() + "')";
         //System.out.println(sql);
         try {
             Statement stat = conn.createStatement();
@@ -186,7 +186,7 @@ public class PatientDao {
 
         boolean res = true;
         initConnection();
-        String sql = "DELETE FROM Patient WHERE Id='" + patientId + "'";
+        String sql = "DELETE FROM Patient WHERE patient_id='" + patientId + "'";
 
         try {
             Statement stat = conn.createStatement();
@@ -204,8 +204,8 @@ public class PatientDao {
 
         boolean res = true;
         initConnection();
-        String sql = "UPDATE Patient SET Name='" + patient.getName() + "', PhoneNumber='" + patient.getPhoneNumber() 
-                + "', DOB='" + patient.getDOB() + "', Address='" + patient.getAddress() + "'";
+        String sql = "UPDATE Patient SET name='" + patient.getName() + "', phone_number='" + patient.getPhoneNumber() 
+                + "', DOB='" + patient.getDOB() + "', community_name='" + patient.getCommunityName() + "'" + "where patient_id = "+ patient.getPatientId() ;
         try {
             Statement stat = conn.createStatement();
             stat.executeUpdate(sql);
