@@ -35,6 +35,27 @@ public class HospitalDao {
     	conn = DriverManager.getConnection(DB_URL, USER, PASS);
 	}
     
+    
+          
+      public ArrayList<Hospital> getAllHospital() throws Exception{
+		
+        ArrayList<Hospital> hList = new ArrayList<>();
+        initConnection();
+        String sql = "SELECT * FROM HospitalList";
+        Statement stat = conn.createStatement();
+        ResultSet rs = stat.executeQuery(sql);
+        while(rs.next()){
+            Hospital hospital = new Hospital();
+            hospital.setHospitalId(rs.getInt("hospital_id"));
+            hospital.setHospitalName(rs.getString("hospital_name"));
+            hospital.setCommunity(rs.getString("hospital_community_name"));
+            hList.add(hospital);
+        }
+        closeConnection();
+        return hList;	
+    }
+      
+      
       public Hospital getHospitalById(int id) throws Exception{
 		
 	Hospital h = null;
@@ -55,13 +76,14 @@ public class HospitalDao {
 	return h;
     }
       
-      public ArrayList<Hospital> getAllHospital() throws Exception{
-		
+       public ArrayList<Hospital> getHospitalByName(String name) throws Exception{
+
         ArrayList<Hospital> hList = new ArrayList<>();
         initConnection();
-        String sql = "SELECT * FROM HospitalList";
-        Statement stat = conn.createStatement();
-        ResultSet rs = stat.executeQuery(sql);
+        String sql = "SELECT * FROM Patient WHERE hospital_name=?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, name);
+        ResultSet rs = ps.executeQuery();
         while(rs.next()){
             Hospital hospital = new Hospital();
             hospital.setHospitalId(rs.getInt("hospital_id"));
@@ -70,8 +92,32 @@ public class HospitalDao {
             hList.add(hospital);
         }
         closeConnection();
-        return hList;	
+
+        return hList;
     }
+       
+
+        public ArrayList<Hospital> getHospitalByCommunity(String community) throws Exception{
+
+        ArrayList<Hospital> hList = new ArrayList<>();
+        initConnection();
+        String sql = "SELECT * FROM Patient WHERE hospital_community_name=?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, community);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+            Hospital hospital = new Hospital();
+            hospital.setHospitalId(rs.getInt("hospital_id"));
+            hospital.setHospitalName(rs.getString("hospital_name"));
+            hospital.setCommunity(rs.getString("hospital_community_name"));
+            hList.add(hospital);
+        }
+        closeConnection();
+
+        return hList;
+    }
+      
+      
       
       
       
