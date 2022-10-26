@@ -48,7 +48,7 @@ public class HospitalDao {
             Hospital hospital = new Hospital();
             hospital.setHospitalId(rs.getInt("hospital_id"));
             hospital.setHospitalName(rs.getString("hospital_name"));
-            hospital.setCommunity(rs.getString("hospital_community_name"));
+            hospital.setCommunity(rs.getString("hospital_communityname"));
             hList.add(hospital);
         }
         closeConnection();
@@ -68,7 +68,7 @@ public class HospitalDao {
             h = new Hospital();
             h.setHospitalId(id);
             h.setHospitalName(rs.getString("hospital_name"));
-            h.setCommunity(rs.getString("hospital_community_name"));
+            h.setCommunity(rs.getString("hospital_communityname"));
     
 	}
 //        System.out.print(p.toString());
@@ -88,7 +88,7 @@ public class HospitalDao {
             Hospital hospital = new Hospital();
             hospital.setHospitalId(rs.getInt("hospital_id"));
             hospital.setHospitalName(rs.getString("hospital_name"));
-            hospital.setCommunity(rs.getString("hospital_community_name"));
+            hospital.setCommunity(rs.getString("hospital_communityname"));
             hList.add(hospital);
         }
         closeConnection();
@@ -101,7 +101,7 @@ public class HospitalDao {
 
         ArrayList<Hospital> hList = new ArrayList<>();
         initConnection();
-        String sql = "SELECT * FROM Patient WHERE hospital_community_name=?";
+        String sql = "SELECT * FROM Patient WHERE hospital_communityname=?";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, community);
         ResultSet rs = ps.executeQuery();
@@ -109,7 +109,7 @@ public class HospitalDao {
             Hospital hospital = new Hospital();
             hospital.setHospitalId(rs.getInt("hospital_id"));
             hospital.setHospitalName(rs.getString("hospital_name"));
-            hospital.setCommunity(rs.getString("hospital_community_name"));
+            hospital.setCommunity(rs.getString("hospital_communityname"));
             hList.add(hospital);
         }
         closeConnection();
@@ -117,6 +117,63 @@ public class HospitalDao {
         return hList;
     }
       
+        
+        public boolean addHospital(Hospital hospital) throws Exception{
+
+        boolean res = true;
+        initConnection();
+        String sql = "INSERT INTO HospitalList(hospital_name,hospital_communityname) "
+                        + "VALUES('" + hospital.getHospitalName() + "','" + hospital.getCommunity()+ "')";
+        //System.out.println(sql);
+        try {
+            Statement stat = conn.createStatement();
+            stat.executeUpdate(sql);
+        }catch(Exception e) {
+            e.printStackTrace();
+            res = false;
+        } finally {
+            closeConnection();
+        }
+        return res;
+    }
+        
+        
+        
+        public boolean deleteHospital(int hospitalId) throws Exception{
+
+        boolean res = true;
+        initConnection();
+        String sql = "DELETE FROM HospitalList WHERE hospital_id='" + hospitalId + "'";
+
+        try {
+            Statement stat = conn.createStatement();
+            stat.executeUpdate(sql);
+        }catch(Exception e) {
+            e.printStackTrace();
+            res = false;
+        } finally {
+            closeConnection();
+        }
+        return res;
+    }
+        
+        
+        public boolean updatePatient(Hospital hospital) throws Exception{
+
+        boolean res = true;
+        initConnection();
+        String sql = "UPDATE HospitalList SET hospital_name='" + hospital.getHospitalName() + "', hospital_communityname='" + hospital.getCommunity() + "'";
+        try {
+            Statement stat = conn.createStatement();
+            stat.executeUpdate(sql);
+        }catch(Exception e) {
+            e.printStackTrace();
+            res = false;
+        } finally {
+            closeConnection();
+        }
+        return res;
+    }
       
       
       
