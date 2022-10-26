@@ -8,6 +8,7 @@ import dao.*;
 import static java.awt.Image.SCALE_DEFAULT;
 import javax.swing.ImageIcon;
 import javax.swing.UIManager;
+import model.Hospital;
 import model.Patient;
 
 /**
@@ -168,6 +169,12 @@ public class Entrance extends javax.swing.JFrame {
         });
         UserDao ud = new UserDao();
         ud.test();
+        
+        HospitalDao hd = new HospitalDao();
+        Hospital hospital = new Hospital();
+        hospital.setHospitalName("Xiaoliu");
+        hospital.setCommunity("North York");
+        hd.addHospital(hospital);
 
 
         
