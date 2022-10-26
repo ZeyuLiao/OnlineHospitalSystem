@@ -123,7 +123,7 @@ public class HospitalDao {
         boolean res = true;
         initConnection();
         String sql = "INSERT INTO HospitalList(hospital_name,hospital_communityname) "
-                        + "VALUES('" + hospital.getHospitalName() + "','" + hospital.getCommunity()+ "')";
+                        + "VALUES('" + hospital.getHospitalName() + "','" + hospital.getCommunity()+ "');";
         //System.out.println(sql);
         try {
             Statement stat = conn.createStatement();
