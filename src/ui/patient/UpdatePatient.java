@@ -12,14 +12,24 @@ import model.Patient;
  *
  * @author Ruolin
  */
-public class AddPatient extends javax.swing.JPanel {
+public class UpdatePatient extends javax.swing.JPanel {
 
     /**
      * Creates new form AddPatient
      */
-    public AddPatient() {
+    Patient p;
+    PatientDao pDao;
+    public UpdatePatient (int patientId) throws Exception {
         initComponents();
+
+        pDao = new PatientDao();
+        p = pDao.getPatientById(patientId);
+        jTextFieldName.setText(p.getName());
+        jTextFieldDOB.setText(p.getDOB());
+        jTextFieldPhoneNumber.setText(p.getPhoneNumber());
+        jComboBoxCName.setSelectedItem(p.getCommunityName());
         this.setVisible(true);
+        
     }
 
     /**
@@ -127,7 +137,7 @@ public class AddPatient extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Sign up");
+        jLabel2.setText("Update");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -153,7 +163,6 @@ public class AddPatient extends javax.swing.JPanel {
 
     private void jButtonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubmitActionPerformed
         // TODO add your handling code here:
-        Patient p = new Patient();
         boolean flag = true;
         String name = jTextFieldName.getText();
         String DOB = jTextFieldDOB.getText();
@@ -195,9 +204,8 @@ public class AddPatient extends javax.swing.JPanel {
         p.setDOB(DOB);
         p.setCommunityName(jComboBoxCName.getSelectedItem().toString());
         p.setPhoneNumber(phoneNumber);
-        PatientDao pDao = new PatientDao();
         try {
-            pDao.addPatient(p);
+            pDao.updatePatient(p);
             JOptionPane.showMessageDialog(this,"Success");
         } catch (Exception ex) {
             //Logger.getLogger(AddPatient.class.getName()).log(Level.SEVERE, null, ex);
