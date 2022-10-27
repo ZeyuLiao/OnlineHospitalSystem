@@ -8,12 +8,12 @@ package ui.doctors;
  *
  * @author ZeyuLiao
  */
-public class PatientPage extends javax.swing.JPanel {
+public class DoctorPatientPage extends javax.swing.JPanel {
 
     /**
      * Creates new form HomePage
      */
-    public PatientPage() {
+    public DoctorPatientPage() {
         initComponents();
     }
 

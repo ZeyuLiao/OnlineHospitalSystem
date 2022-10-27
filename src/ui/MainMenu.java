@@ -4,9 +4,11 @@
  */
 package ui;
 
-import ui.doctors.ProfilePage;
-import ui.doctors.HomePage;
-import ui.doctors.PatientPage;
+import static java.awt.Image.SCALE_DEFAULT;
+import javax.swing.ImageIcon;
+import ui.doctors.DoctorProfilePage;
+import ui.doctors.DoctorHomePage;
+import ui.doctors.DoctorPatientPage;
 import javax.swing.UIManager;
 
 /**
@@ -17,15 +19,46 @@ public class MainMenu extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
+     * @param flag different User type chosen in Entrance
      */
-    public MainMenu() {
+    public void MainMenu(int flag) {
+//        try{
+//            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+//            }catch(Exception e){
+//            System.out.println("主题出错");
+//            e.printStackTrace();
+//        }
         initComponents();
-        HomePage hp = new HomePage();
-        ProfilePage pp = new ProfilePage();
-        PatientPage pap = new PatientPage();
-        jTabbedPane1.addTab("", new javax.swing.ImageIcon("src//icon//icon_home.png"), hp);
-        jTabbedPane1.addTab("", new javax.swing.ImageIcon("src//icon//icon_patient.png"), pap);
-        jTabbedPane1.addTab("", new javax.swing.ImageIcon("src//icon//icon_profile.png"), pp);
+        setVisible(true);
+        jLabelNotification.setVisible(false);
+        switch (flag) {
+            //Choose Patient
+            case 0 -> {
+                
+            }
+            //Choose Doctor
+            case 1 -> {
+                DoctorHomePage hp = new DoctorHomePage();
+                DoctorProfilePage pp = new DoctorProfilePage();
+                DoctorPatientPage pap = new DoctorPatientPage();
+                jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//icon_home.png"), hp);
+                jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//icon_patient.png"), pap);
+                jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//icon_profile.png"), pp);
+                
+            }
+            //Choose Hospital Admin
+            case 2 -> {
+                
+            }
+            //Choose Community Admin
+            case 3 ->{
+               
+            }
+            //Choose System Admin
+            default -> {
+                
+            }
+        }       
         
     }
 
@@ -39,45 +72,61 @@ public class MainMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanelHead = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabelNotification = new javax.swing.JLabel();
+        jTabbedPaneMenu = new javax.swing.JTabbedPane();
+        jPanelNavigator = new javax.swing.JPanel();
+        jButtonChangeAccount = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setLocation(new java.awt.Point(300, 150));
 
         jPanelHead.setBackground(new java.awt.Color(255, 255, 255));
         jPanelHead.setLayout(null);
 
-        jPanel2.setBackground(new java.awt.Color(149, 177, 182));
+        jPanel1.setLayout(null);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-        );
+        jLabelNotification.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(jLabelNotification);
+        jLabelNotification.setBounds(0, 0, 20, 20);
+        ImageIcon not = new ImageIcon("src//icon//icon_reddot.png");
+        not.setImage(not.getImage().getScaledInstance(jLabelNotification.getWidth(),jLabelNotification.getHeight(),SCALE_DEFAULT));
+        jLabelNotification.setIcon(not);
 
-        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        jTabbedPane1.setAlignmentX(1.0F);
-        jTabbedPane1.setAlignmentY(1.0F);
-        jTabbedPane1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jTabbedPane1.setNextFocusableComponent(this);
+        jTabbedPaneMenu.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPaneMenu.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPaneMenu.setAlignmentX(1.0F);
+        jTabbedPaneMenu.setAlignmentY(1.0F);
+        jTabbedPaneMenu.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jTabbedPaneMenu.setNextFocusableComponent(this);
+        jPanel1.add(jTabbedPaneMenu);
+        jTabbedPaneMenu.setBounds(0, -10, 1000, 460);
+        jTabbedPaneMenu.getAccessibleContext().setAccessibleName("");
+
+        jPanelNavigator.setBackground(new java.awt.Color(149, 177, 182));
+        jPanelNavigator.setLayout(null);
+
+        jButtonChangeAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonChangeAccountActionPerformed(evt);
+            }
+        });
+        jPanelNavigator.add(jButtonChangeAccount);
+        jButtonChangeAccount.setBounds(950, 10, 40, 40);
+        ImageIcon logout = new ImageIcon("src//icon//icon_ChangeAccount.png");
+        logout.setImage(logout.getImage().getScaledInstance(jButtonChangeAccount.getWidth(),jButtonChangeAccount.getHeight(),SCALE_DEFAULT));
+        jButtonChangeAccount.setIcon(logout);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jPanelNavigator, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanelHead, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -85,37 +134,46 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelHead, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelNavigator, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE))
         );
-
-        jTabbedPane1.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     */
-    public void MainMenu() {
-        /* Set the Nimbus look and feel */
-//        try{
-//            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-//            }catch(Exception e){
-//            System.out.println("Error in theme");
-//            e.printStackTrace();
+    private void jButtonChangeAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonChangeAccountActionPerformed
+        // TODO add your handling code here:
+        Entrance et = new Entrance();
+        et.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonChangeAccountActionPerformed
+
+//    /**
+//     * @param flag different
+//     */
+//    public void MainMenu(int flag) {
+//        /* Set the Nimbus look and feel */
+////        try{
+////            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+////            }catch(Exception e){
+////            System.out.println("Error in theme");
+////            e.printStackTrace();
+////            }
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new MainMenu().setVisible(true);
 //            }
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainMenu().setVisible(true);
-            }
-        });
-    }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton jButtonChangeAccount;
+    private javax.swing.JLabel jLabelNotification;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelHead;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel jPanelNavigator;
+    private javax.swing.JTabbedPane jTabbedPaneMenu;
     // End of variables declaration//GEN-END:variables
 }

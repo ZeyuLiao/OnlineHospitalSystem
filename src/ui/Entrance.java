@@ -45,7 +45,7 @@ public class Entrance extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxUserType = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
@@ -87,10 +87,10 @@ public class Entrance extends javax.swing.JFrame {
         jPanel1.add(jLabel5);
         jLabel5.setBounds(90, 348, 93, 17);
 
-        jComboBox1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Patient", "Doctors", "Admins", "Community Admin" }));
-        jPanel1.add(jComboBox1);
-        jComboBox1.setBounds(201, 225, 190, 23);
+        jComboBoxUserType.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jComboBoxUserType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Patient", "Doctors", "Admins", "Community Admin" }));
+        jPanel1.add(jComboBoxUserType);
+        jComboBoxUserType.setBounds(201, 225, 190, 23);
 
         jTextField1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jPanel1.add(jTextField1);
@@ -147,7 +147,9 @@ public class Entrance extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         MainMenu menu = new MainMenu();
-        menu.MainMenu();
+        System.out.println(jComboBoxUserType.getSelectedIndex());
+        menu.MainMenu(jComboBoxUserType.getSelectedIndex());
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**     * @param args the command line arguments
@@ -175,7 +177,7 @@ public class Entrance extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBoxUserType;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
