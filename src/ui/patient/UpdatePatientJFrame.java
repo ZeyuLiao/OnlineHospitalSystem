@@ -208,7 +208,7 @@ public class UpdatePatientJFrame extends javax.swing.JFrame {
         try {
             pDao.updatePatient(p);
             JOptionPane.showMessageDialog(this,"Success");
-            this.setVisible(false);
+            dispose();
         } catch (Exception ex) {
             //Logger.getLogger(AddPatient.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();
