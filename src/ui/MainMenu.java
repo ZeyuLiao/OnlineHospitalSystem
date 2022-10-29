@@ -21,8 +21,10 @@ public class MainMenu extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      * @param flag different User type chosen in Entrance
+     * @param id
+     * @throws java.lang.Exception
      */
-    public void MainMenu(int flag) throws Exception {
+    public void MainMenu(int flag, int id) throws Exception {
 //        try{
 //            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 //            }catch(Exception e){
@@ -42,7 +44,7 @@ public class MainMenu extends javax.swing.JFrame {
             //Choose Doctor
             case 1 -> {
                 DoctorHomePage hp = new DoctorHomePage();
-                DoctorProfilePage pp = new DoctorProfilePage();
+                DoctorProfilePage pp = new DoctorProfilePage(id);
                 DoctorPatientPage pap = new DoctorPatientPage();
                 jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//icon_home.png"), hp);
                 jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//icon_patient.png"), pap);

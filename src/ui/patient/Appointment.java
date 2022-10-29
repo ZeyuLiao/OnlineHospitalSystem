@@ -43,7 +43,7 @@ public class Appointment extends javax.swing.JPanel {
         }
     }
         private Object[] addTableRow(Object[] row,Doctor d){
-        row[0] = d.getDoctorId();
+        row[0] = d.getDoctorID();
         row[1] = d.getDepartment();
         row[2] = d.getHospitalName();
         return row;
@@ -215,7 +215,7 @@ public class Appointment extends javax.swing.JPanel {
         
         Doctor d = new Doctor();
         //Doctor d = dDao.getDoctorById(doctorId);
-        jLabelDoctorId.setText(d.getDoctorId()+"");
+        jLabelDoctorId.setText(d.getDoctorID()+"");
         jLabelDoctorName.setText(d.getName());
         jLabelHospital.setText(d.getHospitalName());
         jLabelDepartment.setText(d.getDepartment());
