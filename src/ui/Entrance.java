@@ -6,6 +6,8 @@ package ui;
 
 import dao.*;
 import static java.awt.Image.SCALE_DEFAULT;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.UIManager;
 import model.Patient;
@@ -145,11 +147,15 @@ public class Entrance extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        MainMenu menu = new MainMenu();
-        System.out.println(jComboBoxUserType.getSelectedIndex());
-        menu.MainMenu(jComboBoxUserType.getSelectedIndex());
-        dispose();
+        try {
+            // TODO add your handling code here:
+            MainMenu menu = new MainMenu();
+            System.out.println(jComboBoxUserType.getSelectedIndex());
+            menu.MainMenu(jComboBoxUserType.getSelectedIndex());
+            dispose();
+        } catch (Exception ex) {
+            Logger.getLogger(Entrance.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**     * @param args the command line arguments
