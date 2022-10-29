@@ -4,46 +4,53 @@
  */
 package model;
 
-import javax.swing.ImageIcon;
-
 /**
  *
  * @author ZeyuLiao
  */
 public class Doctor extends User {
-    private String title;
-    private String DOB;
-    private ImageIcon photoDoctor;
+    private int doctorID;
+    private String hospitalName;
+    private String department;
+    private String photoAddress;
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-    
-    public String getDOB() {
-        return DOB;
+    public int getDoctorID() {
+        return doctorID;
     }
 
-    public void setDOB(String DOB) {
-        this.DOB = DOB;
+    public void setDoctorID(int doctorID) {
+        this.doctorID = doctorID;
     }
 
-    public ImageIcon getPhotoDoctor() {
-        return photoDoctor;
+    public String getHospitalName() {
+        return hospitalName;
     }
 
-    public void setPhotoDoctor(ImageIcon photoDoctor) {
-        this.photoDoctor = photoDoctor;
+    public void setHospitalName(String hospitalName) {
+        this.hospitalName = hospitalName;
     }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getPhotoAddress() {
+        return photoAddress;
+    }
+
+    public void setPhotoAddress(String photoAddress) {
+        this.photoAddress = photoAddress;
+    }  
     
     @Override
     public String toString(){
-        return "id:"+this.getTitle()+",name:"+this.getName()+
-                ",phone:"+this.getPhoneNumber()+",address:"+
-                this.getDOB();
+        return "id:"+this.getDoctorID()+",name:"+this.getName()+"hospital:"+this.getHospitalName()+
+                ",phone:"+this.getPhoneNumber()+",photo:"+
+                this.getPhotoAddress();
     }
 
    

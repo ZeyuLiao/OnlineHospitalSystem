@@ -4,6 +4,11 @@
  */
 package ui.doctors;
 
+import dao.DoctorDao;
+import static java.awt.Image.SCALE_DEFAULT;
+import javax.swing.ImageIcon;
+import model.Doctor;
+
 /**
  *
  * @author ZeyuLiao
@@ -13,8 +18,22 @@ public class DoctorProfilePage extends javax.swing.JPanel {
     /**
      * Creates new form HomePage
      */
-    public DoctorProfilePage() {
+    DoctorDao ddao = new DoctorDao();
+       
+    public DoctorProfilePage(int id) throws Exception {
         initComponents();
+        Doctor dc = ddao.getDoctorById(id);
+        ImageIcon dr = new ImageIcon(dc.getPhotoAddress());
+        dr.setImage(dr.getImage().getScaledInstance(jLabelPhoto.getWidth(),jLabelPhoto.getHeight(),SCALE_DEFAULT));
+        jLabelPhoto.setIcon(dr);
+        jLabelName.setText(dc.getName());
+        jLabelHospital.setText("Hospital: " + dc.getHospitalName());
+        jLabelDepartment.setText("Department: " + dc.getDepartment());
+        jLabelID.setText("ID: " + String.valueOf(dc.getDoctorID()));
+        jLabelPhoneNumber.setText("TEL: " + dc.getPhoneNumber());
+
+        
+        
     }
 
     /**
@@ -26,21 +45,141 @@ public class DoctorProfilePage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabelPhoto = new javax.swing.JLabel();
+        jLabelName = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabelDepartment = new javax.swing.JLabel();
+        jLabelHospital = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabelID = new javax.swing.JLabel();
+        jLabelPhoneNumber = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabelSlogan = new javax.swing.JLabel();
+        jLabelSlogan1 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(149, 177, 182));
         setPreferredSize(new java.awt.Dimension(968, 429));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setLayout(null);
+
+        jLabelPhoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(jLabelPhoto);
+        jLabelPhoto.setBounds(10, 20, 180, 170);
+
+        jLabelName.setFont(new java.awt.Font("Segoe Script", 0, 18)); // NOI18N
+        jLabelName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelName.setText("Name");
+        jPanel1.add(jLabelName);
+        jLabelName.setBounds(10, 210, 180, 40);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabelDepartment.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabelDepartment.setText("Department:");
+
+        jLabelHospital.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabelHospital.setText("Hospital: ");
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel3.setText("jLabel1");
+
+        jLabelID.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabelID.setText("Doctor ID: ");
+
+        jLabelPhoneNumber.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabelPhoneNumber.setText("Phone Number");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabelHospital, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelDepartment, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                        .addComponent(jLabelID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(218, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelID, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel3.setLayout(null);
+
+        jLabelSlogan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel3.add(jLabelSlogan);
+        jLabelSlogan.setBounds(30, 60, 820, 40);
+        ImageIcon barcode = new ImageIcon("src//image//barcode.png");
+        barcode.setImage(barcode.getImage().getScaledInstance(jLabelSlogan.getWidth(),jLabelSlogan.getHeight(),SCALE_DEFAULT));
+        jLabelSlogan.setIcon(barcode);
+
+        jLabelSlogan1.setBackground(new java.awt.Color(149, 177, 182));
+        jLabelSlogan1.setFont(new java.awt.Font("Poor Richard", 1, 24)); // NOI18N
+        jLabelSlogan1.setForeground(new java.awt.Color(149, 177, 182));
+        jLabelSlogan1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelSlogan1.setText("SERVE ANY TIME");
+        jPanel3.add(jLabelSlogan1);
+        jLabelSlogan1.setBounds(300, 10, 280, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 968, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 429, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelDepartment;
+    private javax.swing.JLabel jLabelHospital;
+    private javax.swing.JLabel jLabelID;
+    private javax.swing.JLabel jLabelName;
+    private javax.swing.JLabel jLabelPhoneNumber;
+    private javax.swing.JLabel jLabelPhoto;
+    private javax.swing.JLabel jLabelSlogan;
+    private javax.swing.JLabel jLabelSlogan1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }
