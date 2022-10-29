@@ -48,8 +48,8 @@ public class Entrance extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jComboBoxUserType = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        jTextFieldAccount = new javax.swing.JTextField();
+        jPasswordFieldPassword = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabelLogo = new javax.swing.JLabel();
@@ -94,14 +94,14 @@ public class Entrance extends javax.swing.JFrame {
         jPanel1.add(jComboBoxUserType);
         jComboBoxUserType.setBounds(201, 225, 190, 23);
 
-        jTextField1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jPanel1.add(jTextField1);
-        jTextField1.setBounds(201, 284, 190, 23);
+        jTextFieldAccount.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jPanel1.add(jTextFieldAccount);
+        jTextFieldAccount.setBounds(201, 284, 190, 23);
 
-        jPasswordField1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jPasswordField1.setText("input ur code here");
-        jPanel1.add(jPasswordField1);
-        jPasswordField1.setBounds(201, 345, 190, 23);
+        jPasswordFieldPassword.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jPasswordFieldPassword.setText("input ur code here");
+        jPanel1.add(jPasswordFieldPassword);
+        jPasswordFieldPassword.setBounds(201, 345, 190, 23);
 
         jButton1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jButton1.setText("Login");
@@ -151,7 +151,7 @@ public class Entrance extends javax.swing.JFrame {
             // TODO add your handling code here:
             MainMenu menu = new MainMenu();
             System.out.println(jComboBoxUserType.getSelectedIndex());
-            menu.MainMenu(jComboBoxUserType.getSelectedIndex());
+            menu.MainMenu(jComboBoxUserType.getSelectedIndex(),Integer.parseInt(jTextFieldAccount.getText()));
             dispose();
         } catch (Exception ex) {
             Logger.getLogger(Entrance.class.getName()).log(Level.SEVERE, null, ex);
@@ -193,7 +193,7 @@ public class Entrance extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSlogan;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField jPasswordFieldPassword;
+    private javax.swing.JTextField jTextFieldAccount;
     // End of variables declaration//GEN-END:variables
 }
