@@ -10,6 +10,7 @@ import ui.doctors.DoctorProfilePage;
 import ui.doctors.DoctorHomePage;
 import ui.doctors.DoctorPatientPage;
 import javax.swing.UIManager;
+import ui.patient.PatientCrud;
 
 /**
  *
@@ -21,7 +22,7 @@ public class MainMenu extends javax.swing.JFrame {
      * Creates new form NewJFrame
      * @param flag different User type chosen in Entrance
      */
-    public void MainMenu(int flag) {
+    public void MainMenu(int flag) throws Exception {
 //        try{
 //            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 //            }catch(Exception e){
@@ -34,6 +35,8 @@ public class MainMenu extends javax.swing.JFrame {
         switch (flag) {
             //Choose Patient
             case 0 -> {
+                PatientCrud pc = new PatientCrud();
+                jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//icon_home.png"), pc);
                 
             }
             //Choose Doctor
@@ -101,7 +104,7 @@ public class MainMenu extends javax.swing.JFrame {
         jTabbedPaneMenu.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jTabbedPaneMenu.setNextFocusableComponent(this);
         jPanel1.add(jTabbedPaneMenu);
-        jTabbedPaneMenu.setBounds(0, -10, 1000, 460);
+        jTabbedPaneMenu.setBounds(0, 0, 1000, 440);
         jTabbedPaneMenu.getAccessibleContext().setAccessibleName("");
 
         jPanelNavigator.setBackground(new java.awt.Color(149, 177, 182));
