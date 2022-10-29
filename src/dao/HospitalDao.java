@@ -15,7 +15,7 @@ import model.Hospital;
 
 /**
  *
- * @author ziyu
+ * 
  */
 public class HospitalDao {
      private Connection conn = null;
@@ -158,11 +158,12 @@ public class HospitalDao {
     }
         
         
-        public boolean updatePatient(Hospital hospital) throws Exception{
+        public boolean updateHospital(Hospital hospital) throws Exception{
 
         boolean res = true;
         initConnection();
-        String sql = "UPDATE HospitalList SET hospital_name='" + hospital.getHospitalName() + "', hospital_communityname='" + hospital.getCommunity() + "'";
+         String sql = "UPDATE HospitalList SET name='" + hospital.getHospitalName() + "', hospital_communityname='" + hospital.getCommunity() 
+                + "'" + "where patient_id = "+ hospital.getHospitalId() ;
         try {
             Statement stat = conn.createStatement();
             stat.executeUpdate(sql);

@@ -1,13 +1,11 @@
-create table communityList
-(community_name VARCHAR(50) PRIMARY key,
-city_name VARCHAR(50) not null
+create table CommunityList
+(communityId INT(5) AUTO_INCREMENT PRIMARY key,
+community_name VARCHAR(50) UNIQUE,
+city_name VARCHAR(50) not null DEFAULT 'Toronto'
 );
 
-INSERT into communityList
-VALUES('North York','Toronto');
-INSERT into communityList
-VALUES('Toronto Downtown','Toronto');
-INSERT into communityList
-VALUES('Markham','Toronto');
-INSERT into communityList
-VALUES('Scarborough','Toronto');
+INSERT into communityList (community_name)
+VALUES('North York'),
+('Toronto Downtown'),
+('Markham'),
+('Scarborough');
