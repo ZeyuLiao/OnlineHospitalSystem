@@ -27,8 +27,7 @@ public class PatientDao {
     
     public void initConnection() throws Exception{
 		
-	Class.forName(JDBC_DRIVER);  
-    	String url = "jdbc:mysql://localhost:3306/javaweb?serverTimezone=CTT";  
+	Class.forName(JDBC_DRIVER);    
     	conn = DriverManager.getConnection(DB_URL, USER, PASS);
 	}
 	
