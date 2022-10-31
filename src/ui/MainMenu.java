@@ -10,6 +10,7 @@ import ui.doctors.DoctorProfilePage;
 import ui.doctors.DoctorHomePage;
 import ui.doctors.DoctorPatientPage;
 import javax.swing.UIManager;
+import ui.patient.Appointment;
 import ui.patient.PatientCrud;
 
 /**
@@ -39,6 +40,8 @@ public class MainMenu extends javax.swing.JFrame {
             case 0 -> {
                 PatientCrud pc = new PatientCrud();
                 jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//icon_home.png"), pc);
+                Appointment ap = new Appointment(id);
+                jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//icon_home.png"), ap);
                 
             }
             //Choose Doctor

@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import model.Encounter;
 
 /**
@@ -146,14 +147,14 @@ public class EncounterDao {
 	return e;
     }
 
-    public boolean createEncounter(int patientId,int doctorId,String symptom) throws Exception{
+    public boolean createEncounter(int patientId,int doctorId,int state,LocalDate startDate,String symptom) throws Exception{
 
         boolean res = true;
         LocalDate start = LocalDate.now();
         initConnection();
         String sql = "INSERT INTO Encounter( patient_id,doctor_id,start_date,state,symptom) "
                         + "VALUES('" + patientId + "','" + doctorId + 
-                        "','" + start + "','" + false +"','"+ symptom+"')";
+                        "','" + startDate + "','" + state +"','"+ symptom+"')";
         //System.out.println(sql);
         try {
             Statement stat = conn.createStatement();

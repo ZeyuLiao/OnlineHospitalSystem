@@ -96,13 +96,35 @@ public class DoctorDao {
         return doctorList;
     }
     
-        public ArrayList<Doctor> getDoctorByDepartment(String department) throws Exception{
+    public ArrayList<Doctor> getDoctorByDepartment(String department) throws Exception{
 
         ArrayList<Doctor> doctorList = new ArrayList<>();
         initConnection();
         String sql = "SELECT * FROM doctorlist WHERE department=?";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, department);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+            Doctor doctor = new Doctor();
+            doctor.setDoctorID(rs.getInt("doctor_id"));
+            doctor.setName(rs.getString("doctor_name"));
+            doctor.setHospitalName(rs.getString("hospital_name"));
+            doctor.setDepartment(rs.getString("department"));
+            doctor.setPhoneNumber(rs.getString("phone_number"));
+            doctor.setPhotoAddress(rs.getString("photo_address"));
+            doctorList.add(doctor);
+        }
+        closeConnection();
+
+        return doctorList;
+    }
+    public ArrayList<Doctor> getDoctorByHospitalName(String hospitalName) throws Exception{
+
+        ArrayList<Doctor> doctorList = new ArrayList<>();
+        initConnection();
+        String sql = "SELECT * FROM doctorlist WHERE hospital_name=?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, hospitalName);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
             Doctor doctor = new Doctor();
@@ -151,7 +173,7 @@ public class DoctorDao {
 
         boolean res = true;
         initConnection();
-        String sql = "INSERT INTO Patient( doctor_id,doctor_name,hospital_name,department,phone_number,photo_address ) "
+        String sql = "INSERT INTO doctorlist( doctor_name,hospital_name,department,phone_number,photo_address ) "
                         + "VALUES('" + doctor.getName() + "','" + doctor.getHospitalName() + 
                         "','" + doctor.getDepartment() + "','" + doctor.getPhoneNumber()+ "','" + doctor.getPhotoAddress()+ "')";
         System.out.println(sql);
@@ -171,7 +193,7 @@ public class DoctorDao {
 
         boolean res = true;
         initConnection();
-        String sql = "DELETE FROM doctorlist WHERE id='" + id + "'";
+        String sql = "DELETE FROM doctorlist WHERE doctor_id='" + id + "'";
 
         try {
             Statement stat = conn.createStatement();
@@ -190,7 +212,7 @@ public class DoctorDao {
         boolean res = true;
         initConnection();
         String sql = "UPDATE doctorlist SET doctor_name='" + doctor.getName() + "', hospital_name='" + doctor.getHospitalName() 
-                + "', department='" + doctor.getDepartment() + "', phone_number='" + doctor.getPhoneNumber()+ "', photo_address='" + doctor.getPhotoAddress()+ "'";
+                + "', department='" + doctor.getDepartment() + "', phone_number='" + doctor.getPhoneNumber()+ "', photo_address='" + doctor.getPhotoAddress()+ "'"+ "where doctor_id = "+ doctor.getDoctorID();
         try {
             Statement stat = conn.createStatement();
             stat.executeUpdate(sql);
