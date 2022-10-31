@@ -4,6 +4,11 @@
  */
 package ui.hospital;
 
+
+import dao.HospitalDao;
+import javax.swing.JOptionPane;
+import model.Hospital;
+
 /**
  *
  * @author ziyu
@@ -95,6 +100,29 @@ public class AddHospital extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+        
+        Hospital hospital = new Hospital();
+        String name = txtHospitalName.getText();
+        String community = cmbCommunity.getSelectedItem().toString();
+        if(name == null){
+            JOptionPane.showMessageDialog(this,"Please enter valid name");
+            return;
+        }
+        hospital.setHospitalName(name);
+        hospital.setCommunity(community);
+       
+        HospitalDao hospitalDao = new HospitalDao();
+        try {
+            hospitalDao.addHospital(hospital);
+            JOptionPane.showMessageDialog(this,"Success");
+        } catch (Exception ex) {
+            //Logger.getLogger(AddHospital.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
+        
+        
+        
+        
     }//GEN-LAST:event_btnSaveActionPerformed
 
     /**
