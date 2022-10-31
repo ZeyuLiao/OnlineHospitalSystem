@@ -55,24 +55,25 @@ public class CommunityDao {
         return cList;	
     }
       
-        public ArrayList<Community> getCommunityById(int id) throws Exception{
+        public Community getCommunityById(int id) throws Exception{
 
-        ArrayList<Community> cList = new ArrayList<>();
+   
+        Community community = null;
         initConnection();
         String sql = "SELECT * FROM CommunityList WHERE communityId=?";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();
-        while(rs.next()){
-            Community community = new Community();
+        if(rs.next()){
+            community = new Community();
             community.setCommunityId(id);
             community.setCommunityName(rs.getString("community_name"));
             community.setBelongToCity(rs.getString("city_name"));
-            cList.add(community);
+           
         }
         closeConnection();
 
-        return cList;
+        return community;
     }
       
        public ArrayList<Community> getCommunityByName(String name) throws Exception{
@@ -138,11 +139,11 @@ public class CommunityDao {
         
         
         
-        public boolean deleteCommunityByName(String community_name) throws Exception{
+        public boolean deleteCommunityById(int communityId) throws Exception{
 
         boolean res = true;
         initConnection();
-        String sql = "DELETE FROM CommunityList WHERE community_name='" + community_name + "'";
+        String sql = "DELETE FROM CommunityList WHERE communityId='" + communityId + "'";
 
         try {
             Statement stat = conn.createStatement();
