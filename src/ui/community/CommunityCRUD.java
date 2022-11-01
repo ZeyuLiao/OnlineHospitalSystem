@@ -110,7 +110,7 @@ public class CommunityCRUD extends javax.swing.JPanel {
             }
         });
 
-        jComboBoxSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id", "Name", "DOB", "Phone Number", "Community Name" }));
+        jComboBoxSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id", "Name", "City" }));
 
         jButtonView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icon_view.png"))); // NOI18N
         jButtonView.addActionListener(new java.awt.event.ActionListener() {

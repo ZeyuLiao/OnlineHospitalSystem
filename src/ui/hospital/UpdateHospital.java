@@ -4,6 +4,12 @@
  */
 package ui.hospital;
 
+import dao.HospitalDao;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import model.Hospital;
+
 /**
  *
  * @author ziyu
@@ -13,9 +19,23 @@ public class UpdateHospital extends javax.swing.JFrame {
     /**
      * Creates new form UpdateHospital
      */
-    public UpdateHospital() {
+    
+    Hospital hospital;
+    HospitalDao hDao;
+    public UpdateHospital(int hospitalId) throws Exception {
         initComponents();
+        //加一个刷新community combobox 
+        hDao = new HospitalDao();
+        hospital = hDao.getHospitalById(hospitalId);
+        txtUpdateHName.setText(hospital.getHospitalName());
+        cmbCommunity.setSelectedItem(hospital.getCommunity()); //目的：显示医院当前的community情况
+        
+        
+        this.setVisible(true);
+        
     }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,9 +49,9 @@ public class UpdateHospital extends javax.swing.JFrame {
         lblHosName = new javax.swing.JLabel();
         lblBelongCom = new javax.swing.JLabel();
         txtUpdateHName = new javax.swing.JTextField();
-        txtUpdateCommunity = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        cmbCommunity = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +77,8 @@ public class UpdateHospital extends javax.swing.JFrame {
             }
         });
 
+        cmbCommunity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "North York", "Toronto Downtown", "Markham", "Scarborough" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -70,9 +92,9 @@ public class UpdateHospital extends javax.swing.JFrame {
                             .addComponent(lblBelongCom)
                             .addComponent(lblHosName))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtUpdateHName, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUpdateCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtUpdateHName, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                            .addComponent(cmbCommunity, 0, 1, Short.MAX_VALUE))
                         .addGap(0, 86, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -92,7 +114,7 @@ public class UpdateHospital extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBelongCom)
-                    .addComponent(txtUpdateCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(66, 66, 66))
@@ -103,6 +125,22 @@ public class UpdateHospital extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String hName = txtUpdateHName.getText();
+        String belongCommunity = cmbCommunity.getSelectedItem().toString();
+        
+        if(hName.isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter a valid name");
+        }
+        
+        try {
+            hDao.updateHospital(hospital);
+            JOptionPane.showMessageDialog(this,"Success");
+            dispose();
+        } catch (Exception ex) {
+            Logger.getLogger(UpdateHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtUpdateHNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUpdateHNameActionPerformed
@@ -112,44 +150,14 @@ public class UpdateHospital extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UpdateHospital.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UpdateHospital.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UpdateHospital.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UpdateHospital.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new UpdateHospital().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbCommunity;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblBelongCom;
     private javax.swing.JLabel lblHosName;
-    private javax.swing.JTextField txtUpdateCommunity;
     private javax.swing.JTextField txtUpdateHName;
     // End of variables declaration//GEN-END:variables
 }

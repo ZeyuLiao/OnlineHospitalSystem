@@ -5,10 +5,10 @@
 package ui.hospital;
 
 import dao.HospitalDao;
-import ui.patient.*;
+
 import javax.swing.table.DefaultTableModel;
 import model.Hospital;
-import dao.PatientDao;
+
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -110,7 +110,7 @@ public class HospitalCrud extends javax.swing.JPanel {
             }
         });
 
-        jComboBoxSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id", "Name", "DOB", "Phone Number", "Community Name" }));
+        jComboBoxSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id", "Name", "Community Name" }));
         jComboBoxSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxSearchActionPerformed(evt);
@@ -297,24 +297,24 @@ public class HospitalCrud extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonViewActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
-        // TODO add your handling code here:
-//        int selectedIndex = jTableHospital.getSelectedRow();
-//        if(selectedIndex < 0){
-//            JOptionPane.showMessageDialog(this,"Please select a row to delete");
-//            return;
-//        }
-//        DefaultTableModel model = (DefaultTableModel)jTableHospital.getModel();
-//        int patientId = Integer.parseInt(model.getValueAt(selectedIndex,0).toString());
-//        
-//        int n = JOptionPane.showConfirmDialog(null, "Confirm to delete Patient "+patientId + "account?", "",JOptionPane.YES_NO_OPTION);//0/1
-//        try{
-//            if(n==0)
-//                pDao.deletePatient(patientId);
-//            showTable();
-//        }
-//        catch(Exception e){
-//            e.printStackTrace();
-//        }
+         //TODO add your handling code here:
+        int selectedIndex = jTableHospital.getSelectedRow();
+        if(selectedIndex < 0){
+            JOptionPane.showMessageDialog(this,"Please select a row to delete");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel)jTableHospital.getModel();
+        int hospitalId = Integer.parseInt(model.getValueAt(selectedIndex,0).toString());
+        
+        int n = JOptionPane.showConfirmDialog(null, "Confirm to delete Patient "+hospitalId + "account?", "",JOptionPane.YES_NO_OPTION);//0/1
+        try{
+            if(n==0)
+                hDao.deleteHospital(hospitalId);
+            showTable();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
         
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
@@ -326,9 +326,9 @@ public class HospitalCrud extends javax.swing.JPanel {
             return;
         }
         DefaultTableModel model = (DefaultTableModel)jTableHospital.getModel();
-        int patientId = Integer.parseInt(model.getValueAt(selectedIndex,0).toString());
+        int hospitalId = Integer.parseInt(model.getValueAt(selectedIndex,0).toString());
         try {
-            UpdatePatientJFrame up = new UpdatePatientJFrame(patientId);
+            UpdateHospital up = new UpdateHospital(hospitalId);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -337,42 +337,36 @@ public class HospitalCrud extends javax.swing.JPanel {
     private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
         // TODO add your handling code here:
         
-//        String keyword = jComboBoxSearch.getSelectedItem().toString();
-//        String input = JOptionPane.showInputDialog("Please input a value");
-//        ArrayList<Patient> pList = new ArrayList<>();  
-//        try{
-//            switch(keyword){
-//                case "Id": { 
-//                    Patient p = pDao.getPatientById(Integer.parseInt(input)); 
-//                    pList.add(p); 
-//                    break;}
-//                case "Name":{ 
-//                    pList = pDao.getPatientByName(input);  
-//                    break;}
-//                case "DOB":{ 
-//                    pList = pDao.getPatientByDOB(input);
-//                    break;}
-//                case "Phone Number":{ 
-//                    pList = pDao.getPatientByPhoneNumber(input);
-//                    break;}
-//                case "Community Name":{ 
-//                    pList = pDao.getPatientByAddress(input);
-//                    break;}
-//
-//            }
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
-//        DefaultTableModel model = (DefaultTableModel)jTableHospital.getModel();
-//        
-//        model.setRowCount(0);
-//        
-//        for(Patient p:pList){
-//            Object[] row = new Object[10];
-//            addTableRow(row,p);
-//            
-//            model.addRow(row);     
-//        }
+        String keyword = jComboBoxSearch.getSelectedItem().toString();
+        String input = JOptionPane.showInputDialog("Please input a value");
+        ArrayList<Hospital> hList = new ArrayList<>();  
+        try{
+            switch(keyword){
+                case "Id": { 
+                    Hospital h = hDao.getHospitalById(Integer.parseInt(input));
+                    hList.add(h); 
+                    break;}
+                case "Name":{ 
+                    hList = hDao.getHospitalByName(input);  
+                    break;}
+                case "Community Name":{ 
+                    hList = hDao.getHospitalByCommunity(input);
+                    break;}
+
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        DefaultTableModel model = (DefaultTableModel)jTableHospital.getModel();
+        
+        model.setRowCount(0);
+        
+        for(Hospital h:hList){
+            Object[] row = new Object[10];
+            addTableRow(row,h);
+            
+            model.addRow(row);     
+        }
     }//GEN-LAST:event_jButtonSearchActionPerformed
 
     private void jButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshActionPerformed
