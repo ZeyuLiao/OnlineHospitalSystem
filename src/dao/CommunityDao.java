@@ -62,7 +62,7 @@ public class CommunityDao {
         initConnection();
         String sql = "SELECT * FROM CommunityList WHERE communityId=?";
         PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setInt(1, id);
+        ps.setString(1, id+"");
         ResultSet rs = ps.executeQuery();
         if(rs.next()){
             community = new Community();
@@ -82,7 +82,7 @@ public class CommunityDao {
         initConnection();
         String sql = "SELECT * FROM CommunityList WHERE community_name like" +"'" + name +"'";
         PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setString(1, name);
+
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
             Community community = new Community();
@@ -103,7 +103,7 @@ public class CommunityDao {
         initConnection();
         String sql = "SELECT * FROM CommunityList WHERE city_name like" +"'" + city +"'";
         PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setString(1, city);
+ 
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
             Community community = new Community();
