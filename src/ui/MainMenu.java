@@ -122,6 +122,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setIconImage(Entrance.logo.getImage());
         setLocation(new java.awt.Point(300, 150));
 
         jPanelHead.setBackground(new java.awt.Color(255, 255, 255));
