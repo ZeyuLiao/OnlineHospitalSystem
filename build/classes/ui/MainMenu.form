@@ -75,6 +75,7 @@
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ImageIcon not = new ImageIcon(&quot;src//icon//icon_reddot.png&quot;);&#xa;not.setImage(not.getImage().getScaledInstance(jLabelNotification.getWidth(),jLabelNotification.getHeight(),SCALE_DEFAULT));&#xa;jLabelNotification.setIcon(not);"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

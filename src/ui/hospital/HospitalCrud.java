@@ -284,8 +284,8 @@ public class HospitalCrud extends javax.swing.JPanel {
         int hospitalId = Integer.parseInt(model.getValueAt(selectedIndex,0).toString());
         try{
             Hospital h = hDao.getHospitalById(hospitalId);
-            lblName.setText(h.getHospitalId()+"");
-            lblId.setText(h.getHospitalName());
+            lblId.setText(h.getHospitalId()+"");
+            lblName.setText(h.getHospitalName());
             lblCommunity.setText(h.getCommunity());
 
         }

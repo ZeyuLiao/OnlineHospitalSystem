@@ -111,6 +111,11 @@ public class CommunityCRUD extends javax.swing.JPanel {
         });
 
         jComboBoxSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id", "Name", "City" }));
+        jComboBoxSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxSearchActionPerformed(evt);
+            }
+        });
 
         jButtonView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icon_view.png"))); // NOI18N
         jButtonView.addActionListener(new java.awt.event.ActionListener() {
@@ -391,6 +396,10 @@ public class CommunityCRUD extends javax.swing.JPanel {
     private void btnToHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToHospitalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnToHospitalActionPerformed
+
+    private void jComboBoxSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxSearchActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnToHospital;
