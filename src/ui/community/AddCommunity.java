@@ -106,10 +106,12 @@ public class AddCommunity extends javax.swing.JFrame {
         // TODO add your handling code here:
        Community community = new Community();
        String communityName = txtCommunityName.getText();
+       
        if(communityName == null){
            JOptionPane.showMessageDialog(this,"Please enter a valid community name");
            return;
        }
+       community.setCommunityName(communityName);
        CommunityDao communityDao = new CommunityDao();
         try {
             communityDao.addCommunity(community);

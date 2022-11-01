@@ -328,7 +328,7 @@ public class CommunityCRUD extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel)jTableCommunity.getModel();
         int communityId = Integer.parseInt(model.getValueAt(selectedIndex,0).toString());
         try {
-            //UpdateCommunity up = new UpdateCommunity(communityId);
+            UpdateCommunity up = new UpdateCommunity(communityId);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
