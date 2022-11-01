@@ -113,6 +113,7 @@ public class AddCommunity extends javax.swing.JFrame {
        CommunityDao communityDao = new CommunityDao();
         try {
             communityDao.addCommunity(community);
+            dispose();
         } catch (Exception ex) {
             Logger.getLogger(AddCommunity.class.getName()).log(Level.SEVERE, null, ex);
         }

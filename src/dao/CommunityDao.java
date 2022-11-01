@@ -122,8 +122,7 @@ public class CommunityDao {
 
         boolean res = true;
         initConnection();
-        String sql = "INSERT INTO CommunityList(community_name) "
-                        + "VALUES('" + community.getCommunityName() + "');";
+        String sql = "INSERT INTO CommunityList(community_name) VALUES('" + community.getCommunityName() + "');";
         //System.out.println(sql);
         try {
             Statement stat = conn.createStatement();
