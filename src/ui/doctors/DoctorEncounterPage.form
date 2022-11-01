@@ -75,7 +75,7 @@
                 <Column editable="true" title="Encounter ID" type="java.lang.Object"/>
                 <Column editable="true" title="Name" type="java.lang.Object"/>
                 <Column editable="true" title="Date" type="java.lang.Object"/>
-                <Column editable="true" title="Symptom" type="java.lang.Object"/>
+                <Column editable="true" title="Status" type="java.lang.Object"/>
               </Table>
             </Property>
           </Properties>
@@ -97,10 +97,10 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jLabelBS" max="32767" attributes="0"/>
-                      <Component id="jLabelWBC" alignment="1" max="32767" attributes="0"/>
                       <Component id="jLabelBP" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabelHBR" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                      <Component id="jLabelHBR" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabelBS" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabelWBC" alignment="0" pref="192" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="30" max="32767" attributes="0"/>
               </Group>
@@ -135,12 +135,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelBS">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Blood Sugar:"/>
+            <Property name="text" type="java.lang.String" value="Blood Sugar: "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelWBC">
           <Properties>
-            <Property name="text" type="java.lang.String" value="White Blood Cells:"/>
+            <Property name="text" type="java.lang.String" value="White Blood Cells: "/>
           </Properties>
         </Component>
       </SubComponents>
@@ -221,6 +221,11 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -231,23 +236,14 @@
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jScrollPane2" max="32767" attributes="0"/>
                               <Component id="jScrollPane3" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jButtonCheckVS" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jButtonDiagnose" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -263,11 +259,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane2" min="-2" pref="106" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButtonDiagnose" max="32767" attributes="0"/>
-                      <Component id="jButtonCheckVS" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="jButton1" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -283,6 +275,7 @@
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="jTextAreaSymptom">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
               </Properties>
@@ -298,6 +291,7 @@
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="jTextAreaDiagnose">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
               </Properties>
@@ -314,28 +308,12 @@
             <Property name="text" type="java.lang.String" value="Diagnose:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButtonCheckVS">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Check Vital Signs"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCheckVSActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="text" type="java.lang.String" value="View Details"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="jButtonDiagnose">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Diagnose"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDiagnoseActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

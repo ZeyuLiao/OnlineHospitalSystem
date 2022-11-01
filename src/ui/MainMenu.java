@@ -8,9 +8,9 @@ import static java.awt.Image.SCALE_DEFAULT;
 import javax.swing.ImageIcon;
 import ui.doctors.DoctorProfilePage;
 import ui.doctors.DoctorHomePage;
-import ui.doctors.DoctorPatientPage;
 import javax.swing.UIManager;
 import ui.community.CommunityCRUD;
+import ui.doctors.DoctorEncounterPage;
 import ui.hospital.HospitalCrud;
 import ui.hospitalAdmin.DoctorCrud;
 import ui.patient.MyEncounter;
@@ -58,10 +58,10 @@ public class MainMenu extends javax.swing.JFrame {
             case 1 -> {
                 DoctorHomePage hp = new DoctorHomePage(id);
                 DoctorProfilePage pp = new DoctorProfilePage(id);
-                DoctorPatientPage pap = new DoctorPatientPage();
+                DoctorEncounterPage ep = new DoctorEncounterPage(id);
                 jLabelNotification.setVisible(hp.isFlag());
                 jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//icon_home.png"), hp);
-                jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//icon_patient.png"), pap);
+                jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//icon_patient.png"), ep);
                 jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//icon_profile.png"), pp);
                 
             }
@@ -141,7 +141,7 @@ public class MainMenu extends javax.swing.JFrame {
         jTabbedPaneMenu.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jTabbedPaneMenu.setNextFocusableComponent(this);
         jPanel1.add(jTabbedPaneMenu);
-        jTabbedPaneMenu.setBounds(0, 0, 1000, 440);
+        jTabbedPaneMenu.setBounds(0, 0, 1020, 440);
         jTabbedPaneMenu.getAccessibleContext().setAccessibleName("");
 
         jPanelNavigator.setBackground(new java.awt.Color(149, 177, 182));
@@ -153,7 +153,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         jPanelNavigator.add(jButtonChangeAccount);
-        jButtonChangeAccount.setBounds(950, 10, 40, 40);
+        jButtonChangeAccount.setBounds(970, 10, 40, 40);
         ImageIcon logout = new ImageIcon("src//icon//icon_ChangeAccount.png");
         logout.setImage(logout.getImage().getScaledInstance(jButtonChangeAccount.getWidth(),jButtonChangeAccount.getHeight(),SCALE_DEFAULT));
         jButtonChangeAccount.setIcon(logout);
@@ -162,12 +162,9 @@ public class MainMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelNavigator, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelHead, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanelNavigator, javax.swing.GroupLayout.DEFAULT_SIZE, 1023, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelHead, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
