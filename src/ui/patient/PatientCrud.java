@@ -25,7 +25,7 @@ public class PatientCrud extends javax.swing.JPanel {
      */
     PatientDao pDao;
     public PatientCrud() throws Exception{
-        pDao = new PatientDao();
+        this.pDao = new PatientDao();
         initComponents();
         showTable();
     }

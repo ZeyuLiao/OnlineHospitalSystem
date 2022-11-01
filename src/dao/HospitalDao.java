@@ -15,7 +15,7 @@ import model.Hospital;
 
 /**
  *
- * 
+ * @author ziyu
  */
 public class HospitalDao {
      private Connection conn = null;
@@ -80,7 +80,7 @@ public class HospitalDao {
 
         ArrayList<Hospital> hList = new ArrayList<>();
         initConnection();
-        String sql = "SELECT * FROM Patient WHERE hospital_name=?";
+        String sql = "SELECT * FROM hospitallist WHERE hospital_name=?";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, name);
         ResultSet rs = ps.executeQuery();
@@ -101,7 +101,7 @@ public class HospitalDao {
 
         ArrayList<Hospital> hList = new ArrayList<>();
         initConnection();
-        String sql = "SELECT * FROM Patient WHERE hospital_communityname=?";
+        String sql = "SELECT * FROM hospitallist WHERE hospital_communityname=?";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, community);
         ResultSet rs = ps.executeQuery();
@@ -162,8 +162,7 @@ public class HospitalDao {
 
         boolean res = true;
         initConnection();
-         String sql = "UPDATE HospitalList SET name='" + hospital.getHospitalName() + "', hospital_communityname='" + hospital.getCommunity() 
-                + "'" + "where patient_id = "+ hospital.getHospitalId() ;
+        String sql = "UPDATE HospitalList SET hospital_name='" + hospital.getHospitalName() + "', hospital_communityname='" + hospital.getCommunity() + "'"+ "where hospital_id = "+ hospital.getHospitalId();
         try {
             Statement stat = conn.createStatement();
             stat.executeUpdate(sql);
@@ -187,3 +186,4 @@ public class HospitalDao {
     }
     
 }
+
