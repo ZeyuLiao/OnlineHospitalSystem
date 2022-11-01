@@ -227,7 +227,7 @@ public class AddPatientJFrame extends javax.swing.JFrame {
         }else{
             for(char c:phoneNumber.toCharArray()){
                 if(c>'9' || c<'0'){
-                    jLabelDOB.setText("Wrong Phone Number");
+                    jLabelPhoneNumber.setText("Wrong Phone Number");
                     flag = false;
                 }
             }
@@ -267,7 +267,7 @@ public class AddPatientJFrame extends javax.swing.JFrame {
         }else{
             for(char c:phoneNumber.toCharArray()){
                 if(c>'9' || c<'0'){
-                    jLabelDOB.setText("Wrong Phone Number");
+                    jLabelPhoneNumber.setText("Wrong Phone Number");
                 }
             }
         }
