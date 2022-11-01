@@ -88,7 +88,7 @@ public class Entrance extends javax.swing.JFrame {
         jLabel5.setBounds(90, 348, 93, 17);
 
         jComboBoxUserType.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jComboBoxUserType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Patient", "Doctors", "Hospital Admins", "Community Admin" }));
+        jComboBoxUserType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Patient", "Doctors", "Hospital Admins", "Community Admin", "System Admin" }));
         jPanel1.add(jComboBoxUserType);
         jComboBoxUserType.setBounds(201, 225, 190, 23);
 
@@ -115,7 +115,7 @@ public class Entrance extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Don't have account? Sign in here!");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(169, 514, 185, 17);
+        jLabel6.setBounds(169, 514, 192, 17);
         jPanel1.add(jLabelLogo);
         jLabelLogo.setBounds(80, 90, 340, 70);
         ImageIcon logoHospital = new ImageIcon("src//image//Logo.png");
