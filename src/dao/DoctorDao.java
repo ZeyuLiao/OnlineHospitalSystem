@@ -207,7 +207,7 @@ public class DoctorDao {
         return res;
     }
 	//update
-    public boolean updatePatient(Doctor doctor) throws Exception{
+    public boolean updateDoctor(Doctor doctor) throws Exception{
 
         boolean res = true;
         initConnection();

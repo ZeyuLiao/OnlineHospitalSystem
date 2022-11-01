@@ -9,6 +9,7 @@ import ui.patient.*;
 import javax.swing.table.DefaultTableModel;
 import model.Patient;
 import dao.PatientDao;
+import static java.awt.Image.SCALE_DEFAULT;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -330,7 +331,7 @@ public class DoctorCrud extends javax.swing.JPanel {
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
         // TODO add your handling code here:
-        AddPatientJFrame add = new AddPatientJFrame();
+        AddDoctor add = new AddDoctor();
 //        add.setBounds(100, 100, 750, 500);
         add.setVisible(true);
         try {
@@ -358,6 +359,7 @@ public class DoctorCrud extends javax.swing.JPanel {
             jLabelDepartment.setText(d.getDepartment());
             jLabelHospitalName.setText(d.getHospitalName());
             ImageIcon photo = new ImageIcon(d.getPhotoAddress());
+            photo.setImage(photo.getImage().getScaledInstance(jLabelPhoto.getWidth(),jLabelPhoto.getHeight(),SCALE_DEFAULT));
             jLabelPhoto.setIcon(photo);
         }
         catch(Exception e){
@@ -397,9 +399,10 @@ public class DoctorCrud extends javax.swing.JPanel {
             return;
         }
         DefaultTableModel model = (DefaultTableModel)jTableDoctor.getModel();
-        int patientId = Integer.parseInt(model.getValueAt(selectedIndex,0).toString());
+        int docterId = Integer.parseInt(model.getValueAt(selectedIndex,0).toString());
         try {
-            UpdatePatientJFrame up = new UpdatePatientJFrame(patientId);
+            UpdateDoctor up = new UpdateDoctor(docterId);
+            up.setVisible(true);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
