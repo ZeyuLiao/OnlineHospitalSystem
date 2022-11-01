@@ -6,6 +6,7 @@ package ui.patient;
 import dao.PatientDao;
 import javax.swing.JOptionPane;
 import model.Patient;
+import ui.Entrance;
 
 /**
  *
@@ -60,6 +61,8 @@ public class UpdatePatientJFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Update Profile");
+        setIconImage(Entrance.logo.getImage());
 
         jLabel1.setText("Name:");
 

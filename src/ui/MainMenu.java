@@ -112,11 +112,13 @@ public class MainMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanelHead = new javax.swing.JPanel();
+        jLabelLogo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabelNotification = new javax.swing.JLabel();
         jTabbedPaneMenu = new javax.swing.JTabbedPane();
         jPanelNavigator = new javax.swing.JPanel();
         jButtonChangeAccount = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -124,6 +126,11 @@ public class MainMenu extends javax.swing.JFrame {
 
         jPanelHead.setBackground(new java.awt.Color(255, 255, 255));
         jPanelHead.setLayout(null);
+        jPanelHead.add(jLabelLogo);
+        jLabelLogo.setBounds(0, 10, 320, 60);
+        ImageIcon logoHospital = new ImageIcon("src//image//Logo.png");
+        logoHospital.setImage(logoHospital.getImage().getScaledInstance(jLabelLogo.getWidth(),jLabelLogo.getHeight(),SCALE_DEFAULT));
+        jLabelLogo.setIcon(logoHospital);
 
         jPanel1.setLayout(null);
 
@@ -157,6 +164,12 @@ public class MainMenu extends javax.swing.JFrame {
         ImageIcon logout = new ImageIcon("src//icon//icon_ChangeAccount.png");
         logout.setImage(logout.getImage().getScaledInstance(jButtonChangeAccount.getWidth(),jButtonChangeAccount.getHeight(),SCALE_DEFAULT));
         jButtonChangeAccount.setIcon(logout);
+
+        jLabel1.setFont(new java.awt.Font("Poor Richard", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("SERVE ANY TIME");
+        jPanelNavigator.add(jLabel1);
+        jLabel1.setBounds(30, 10, 180, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -207,6 +220,8 @@ public class MainMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonChangeAccount;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelLogo;
     public static javax.swing.JLabel jLabelNotification;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelHead;

@@ -217,6 +217,27 @@ public class PatientDao {
         return res;
     }
     
+    
+    public  boolean isExist(int id) throws Exception{
+		
+//        ArrayList<Integer> intList = new ArrayList<>();
+        initConnection();
+        String sql = "SELECT patient_id FROM Patient WHERE patient_id=?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, id+"");
+        ResultSet rs = ps.executeQuery();
+
+        //must have while(rs.next()){}
+        if(rs.next()){
+            closeConnection();
+            return true;
+        }
+
+        closeConnection();
+
+        return false;
+    }
+    
 	
     public void closeConnection() throws Exception{
         conn.close();
