@@ -37,7 +37,7 @@ public class MyEncounter extends javax.swing.JPanel {
             ex.printStackTrace();
         }
     }
-        private Object[] addTableRow(Object[] row,Encounter e) throws Exception{
+    private Object[] addTableRow(Object[] row,Encounter e) throws Exception{
         row[0] = e.getEncounterId();
         Doctor d = dDao.getDoctorById(e.getDoctorId());
         row[1] = d.getName();
@@ -66,6 +66,7 @@ public class MyEncounter extends javax.swing.JPanel {
             
             model.addRow(row);     
         }
+        //System.out.print(model.getRowCount());
         
     }
     /**
@@ -201,7 +202,7 @@ public class MyEncounter extends javax.swing.JPanel {
             }
             int n = JOptionPane.showConfirmDialog(null, "Confirm to cancel this "+encounterId + "appointment?", "",JOptionPane.YES_NO_OPTION);//0/1
             if(n==0)
-            eDao.deleteEncounterByEncounterId(encounterId);
+                eDao.deleteEncounterByEncounterId(encounterId);
             showTable();
         }
         catch(Exception e){

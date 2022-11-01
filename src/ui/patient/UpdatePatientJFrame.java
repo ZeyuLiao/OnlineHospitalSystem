@@ -82,6 +82,10 @@ public class UpdatePatientJFrame extends javax.swing.JFrame {
 
         jComboBoxCName.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Toronto Downtown", "North York", "Markham", "Scarborough" }));
 
+        jLabelPhoneNumber.setForeground(new java.awt.Color(255, 0, 0));
+
+        jLabelDOB.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(

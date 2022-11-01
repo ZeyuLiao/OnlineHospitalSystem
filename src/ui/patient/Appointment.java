@@ -179,7 +179,7 @@ public class Appointment extends javax.swing.JPanel {
                                 .addComponent(jLabelDepartment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabelHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,6 +239,10 @@ public class Appointment extends javax.swing.JPanel {
 
     private void jButtonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubmitActionPerformed
         // TODO add your handling code here:
+        if(jLabelDoctorId.getText().isBlank()){
+            JOptionPane.showMessageDialog(this,"Please choose one doctor.");
+            return;
+        }
         try {
             eDao.createEncounter(patientId,Integer.parseInt(jLabelDoctorId.getText()),0,LocalDate.now(),jTextArea.getText());
         } catch (Exception ex) {

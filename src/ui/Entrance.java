@@ -4,13 +4,11 @@
  */
 package ui;
 
-import dao.*;
 import static java.awt.Image.SCALE_DEFAULT;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.UIManager;
-import model.Patient;
 
 /**
  *
@@ -174,10 +172,6 @@ public class Entrance extends javax.swing.JFrame {
                 new Entrance().setVisible(true);
             }
         });
-        UserDao ud = new UserDao();
-        ud.test();
-
-
         
     }
 
