@@ -21,7 +21,7 @@ import ui.MainMenu;
  *
  * @author ZeyuLiao
  */
-public class DoctorHomePage extends javax.swing.JPanel {
+public class DoctorEncounterPage extends javax.swing.JPanel {
 
     EncounterDao eDao = new EncounterDao();
     PatientDao pDao = new PatientDao();
@@ -33,7 +33,7 @@ public class DoctorHomePage extends javax.swing.JPanel {
      * @param id
      * @throws java.lang.Exception
      */
-    public DoctorHomePage(int id) throws Exception {
+    public DoctorEncounterPage(int id) throws Exception {
         initComponents();
         this.id = id;
         populateTable();
@@ -55,13 +55,13 @@ public class DoctorHomePage extends javax.swing.JPanel {
         model.setRowCount(0);
         ArrayList<Encounter> elist = eDao.getAllEncounter();
         for (Encounter e : elist){
-            if(id == e.getDoctorId() && e.getState()==false){
+            if(id == e.getDoctorId()){
                 Object[] row = new Object[5];
                 Patient p = pDao.getPatientById(e.getPatientId());
                 row[0] = e.getEncounterId();
                 row[1] = p.getName();
                 row[2] = e.getStartDate();
-                row[3] = e.getSymptom();            
+                row[3] = e.getState();            
                 model.addRow(row);  
                 }
         }
@@ -97,9 +97,7 @@ public class DoctorHomePage extends javax.swing.JPanel {
         jTextAreaDiagnose = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButtonCheckVS = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButtonDiagnose = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(149, 177, 182));
         setPreferredSize(new java.awt.Dimension(968, 429));
@@ -112,7 +110,7 @@ public class DoctorHomePage extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Encounter ID", "Name", "Date", "Symptom"
+                "Encounter ID", "Name", "Date", "Status"
             }
         ));
         jScrollPane1.setViewportView(jTableEncounter);
@@ -123,9 +121,9 @@ public class DoctorHomePage extends javax.swing.JPanel {
 
         jLabelHBR.setText("Heart Beat Rate:");
 
-        jLabelBS.setText("Blood Sugar:");
+        jLabelBS.setText("Blood Sugar: ");
 
-        jLabelWBC.setText("White Blood Cells:");
+        jLabelWBC.setText("White Blood Cells: ");
 
         javax.swing.GroupLayout jPanelVitalSignsLayout = new javax.swing.GroupLayout(jPanelVitalSigns);
         jPanelVitalSigns.setLayout(jPanelVitalSignsLayout);
@@ -134,10 +132,10 @@ public class DoctorHomePage extends javax.swing.JPanel {
             .addGroup(jPanelVitalSignsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelVitalSignsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabelBS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelWBC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelBP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelHBR, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelHBR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelBS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelWBC, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanelVitalSignsLayout.setVerticalGroup(
@@ -196,10 +194,12 @@ public class DoctorHomePage extends javax.swing.JPanel {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
+        jTextAreaSymptom.setEditable(false);
         jTextAreaSymptom.setColumns(20);
         jTextAreaSymptom.setRows(5);
         jScrollPane3.setViewportView(jTextAreaSymptom);
 
+        jTextAreaDiagnose.setEditable(false);
         jTextAreaDiagnose.setColumns(20);
         jTextAreaDiagnose.setRows(5);
         jScrollPane2.setViewportView(jTextAreaDiagnose);
@@ -208,13 +208,6 @@ public class DoctorHomePage extends javax.swing.JPanel {
 
         jLabel2.setText("Diagnose:");
 
-        jButtonCheckVS.setText("Check Vital Signs");
-        jButtonCheckVS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCheckVSActionPerformed(evt);
-            }
-        });
-
         jButton1.setText("View Details");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,17 +215,14 @@ public class DoctorHomePage extends javax.swing.JPanel {
             }
         });
 
-        jButtonDiagnose.setText("Diagnose");
-        jButtonDiagnose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDiagnoseActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,19 +231,11 @@ public class DoctorHomePage extends javax.swing.JPanel {
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2)
                             .addComponent(jScrollPane3))
                         .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonCheckVS)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonDiagnose)
-                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -267,10 +249,7 @@ public class DoctorHomePage extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonDiagnose, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonCheckVS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -306,69 +285,6 @@ public class DoctorHomePage extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonDiagnoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDiagnoseActionPerformed
-        // TODO add your handling code here:
-        int selectRowIndex = jTableEncounter.getSelectedRow();
-        if(selectRowIndex <0){
-            JOptionPane.showMessageDialog(this,"Please select one encounter");
-            return;
-        }
-        if( "Blood Pressure:".equals(jLabelBP.getText())){
-            JOptionPane.showMessageDialog(this,"Please Check vital signs First");
-            return;
-        }
-        if( "".equals(jTextAreaDiagnose.getText())){
-            JOptionPane.showMessageDialog(this,"Please give diagnose");
-            return;
-        }
-        
-        e.setDiagnosis(jTextAreaDiagnose.getText());
-        e.setEndDate(LocalDate.now());
-        e.setState(true);
-        if(jTableEncounter.getColumnCount()==0) MainMenu.notification(true);
-        else MainMenu.notification(false);
-        
-        try {
-            eDao.updateEncounter(e);
-            System.out.println("ui.doctors.DoctorHomePage.jButtonDiagnoseActionPerformed()");   
-        } catch (Exception ex) {
-            Logger.getLogger(DoctorHomePage.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            populateTable();
-            if(jTableEncounter.getColumnCount()==0) MainMenu.notification(true);
-            else MainMenu.notification(false);            
-        } catch (Exception ex) {
-            Logger.getLogger(DoctorHomePage.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }//GEN-LAST:event_jButtonDiagnoseActionPerformed
-
-    private void jButtonCheckVSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCheckVSActionPerformed
-        // TODO add your handling code here:
-        int selectRowIndex = jTableEncounter.getSelectedRow();
-        if(selectRowIndex <0){
-            JOptionPane.showMessageDialog(this,"Please select one encounter");
-            return;
-        }
-        Random r = new Random();
-        int bp = r.nextInt(40) + 80;
-        int hr = r.nextInt(40) + 80;
-        double bs = r.nextInt(10)*0.1 + 0.4;
-        double wbc = r.nextInt(7)*0.1 + 0.4;
-       
-        e.setBlood_pressure(bp);
-        e.setHeart_beat_rate(hr);
-        e.setBlood_sugar(bs);
-        e.setWhite_blood_cells(wbc);
-        
-        jLabelBP.setText("Blood Pressure: " + bp);
-        jLabelHBR.setText("Heart Beat Rate: " + hr);
-        jLabelBS.setText("Blood Sugar: " + String.valueOf(bs));
-        jLabelWBC.setText("While Blood Cells: " + String.valueOf(wbc));       
-        
-    }//GEN-LAST:event_jButtonCheckVSActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             // TODO add your handling code here:
@@ -387,17 +303,20 @@ public class DoctorHomePage extends javax.swing.JPanel {
             jLabelPatientId.setText("Patient ID: " + e.getPatientId());
             jLabelStartDate.setText("Encounter Start Date: " + String.valueOf(e.getStartDate()));
             jTextAreaSymptom.setText(e.getSymptom());
+            jLabelBP.setText("Blood Pressure: "+e.getBlood_pressure());
+            jLabelHBR.setText("Heart Beat Rate: "+e.getHeart_beat_rate());
+            jLabelBS.setText("Blood Sugar: "+e.getBlood_sugar());
+            jLabelWBC.setText("White Blood Cells: "+e.getWhite_blood_cells());
+            jTextAreaDiagnose.setText(e.getDiagnosis());
             
         } catch (Exception ex) {
-            Logger.getLogger(DoctorHomePage.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DoctorEncounterPage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButtonCheckVS;
-    private javax.swing.JButton jButtonDiagnose;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelBP;

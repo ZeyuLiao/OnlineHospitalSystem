@@ -26,6 +26,8 @@ public class UpdateDoctor extends javax.swing.JFrame {
     private String filepath;
     /**
      * Creates new form AddPatientJFrame
+     * @param doctorId
+     * @throws java.lang.Exception
      */
     public UpdateDoctor(int doctorId) throws Exception {
         initComponents();

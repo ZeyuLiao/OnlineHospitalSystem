@@ -76,7 +76,6 @@ public class AddDoctor extends javax.swing.JFrame {
         jPanel2.add(jLabelPhoto);
         jLabelPhoto.setBounds(6, 6, 220, 210);
 
-        jButtonUpload.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jButtonUpload.setText("Upload");
         jButtonUpload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +83,7 @@ public class AddDoctor extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButtonUpload);
-        jButtonUpload.setBounds(80, 240, 78, 21);
+        jButtonUpload.setBounds(80, 231, 78, 30);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -119,7 +118,6 @@ public class AddDoctor extends javax.swing.JFrame {
         jLabelPhoneNumberNotice.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabelPhoneNumberNotice.setText("You must input your 10 digits phone number");
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel1.setText("Name:");
 
         jLabelDepartmentNotice.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
@@ -127,13 +125,10 @@ public class AddDoctor extends javax.swing.JFrame {
         jLabelDepartmentNotice.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabelDepartmentNotice.setText("You must input your department");
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel4.setText("Hospital Name:");
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel3.setText("Department: ");
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel5.setText("Phone Number:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -194,7 +189,6 @@ public class AddDoctor extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButtonSubmit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jButtonSubmit.setText("Submit");
         jButtonSubmit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -207,7 +201,7 @@ public class AddDoctor extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Sign up");
+        jLabel2.setText("Create Doctor Profile");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
