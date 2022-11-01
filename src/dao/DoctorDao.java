@@ -189,7 +189,7 @@ public class DoctorDao {
         return res;
     }
     //delete
-    public boolean deletePatient(int id) throws Exception{
+    public boolean deleteDoctor(int id) throws Exception{
 
         boolean res = true;
         initConnection();

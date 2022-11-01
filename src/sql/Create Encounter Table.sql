@@ -3,9 +3,12 @@ CREATE TABLE encounter (
 	doctor_id INT NOT NULL,
 	patient_id INT NOT NULL,
 	state boolean,
-	vitalsign_id INT,
 	symptom VARCHAR ( 100 ),
 	diagnosis VARCHAR ( 100 ),
 	start_date DATE,
-	end_date DATE 
+	end_date DATE, 
+	blood_pressure INT,
+	heart_beat_rate INT,
+	blood_sugar DOUBLE,
+	white_blood_cells DOUBLE
 );

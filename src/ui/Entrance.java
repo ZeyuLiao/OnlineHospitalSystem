@@ -90,7 +90,7 @@ public class Entrance extends javax.swing.JFrame {
         jLabel5.setBounds(90, 348, 93, 17);
 
         jComboBoxUserType.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jComboBoxUserType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Patient", "Doctors", "Admins", "Community Admin" }));
+        jComboBoxUserType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Patient", "Doctors", "Hospital Admins", "Community Admin" }));
         jPanel1.add(jComboBoxUserType);
         jComboBoxUserType.setBounds(201, 225, 190, 23);
 

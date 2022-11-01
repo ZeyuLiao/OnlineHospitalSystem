@@ -16,11 +16,14 @@ public class Encounter {
     private int doctorId;
     private int patientId;
     private Boolean state;
-    private int vitalSignsId;
     private String symptom;
     private String diagnosis;
     private LocalDate startDate;
     private LocalDate endDate;
+    private int blood_pressure;
+    private int heart_bear_rate;
+    private double blood_sugar;
+    private double white_blood_cells;
 
     public int getEncounterId() {
         return encounterId;
@@ -54,14 +57,6 @@ public class Encounter {
         this.state = state;
     }
 
-    public int getVitalSignsId() {
-        return vitalSignsId;
-    }
-
-    public void setVitalSignsId(int vitalSignsId) {
-        this.vitalSignsId = vitalSignsId;
-    }
-
     public String getSymptom() {
         return symptom;
     }
@@ -93,6 +88,39 @@ public class Encounter {
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
+
+    public int getBlood_pressure() {
+        return blood_pressure;
+    }
+
+    public void setBlood_pressure(int blood_pressure) {
+        this.blood_pressure = blood_pressure;
+    }
+
+    public int getHeart_beat_rate() {
+        return heart_bear_rate;
+    }
+
+    public void setHeart_beat_rate(int heart_beat_rate) {
+        this.heart_bear_rate = heart_beat_rate;
+    }
+
+    public double getBlood_sugar() {
+        return blood_sugar;
+    }
+
+    public void setBlood_sugar(double blood_sugar) {
+        this.blood_sugar = blood_sugar;
+    }
+
+    public double getWhite_blood_cells() {
+        return white_blood_cells;
+    }
+
+    public void setWhite_blood_cells(double white_blood_cells) {
+        this.white_blood_cells = white_blood_cells;
+    }
+    
     
     
 }

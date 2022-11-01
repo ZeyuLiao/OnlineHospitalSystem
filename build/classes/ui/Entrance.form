@@ -139,7 +139,7 @@
                   <StringArray count="4">
                     <StringItem index="0" value="Patient"/>
                     <StringItem index="1" value="Doctors"/>
-                    <StringItem index="2" value="Admins"/>
+                    <StringItem index="2" value="Hospital Admins"/>
                     <StringItem index="3" value="Community Admin"/>
                   </StringArray>
                 </Property>

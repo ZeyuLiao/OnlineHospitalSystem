@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import model.Encounter;
 
 /**
@@ -68,8 +67,12 @@ public class EncounterDao {
             e.setStartDate(rs.getDate("start_date").toLocalDate());
             e.setState(rs.getBoolean("state"));
             e.setSymptom(rs.getString("symptom"));
-            e.setVitalSignsId(rs.getInt("vitalsign_id"));
+            e.setBlood_pressure(rs.getInt("blood_pressure"));
+            e.setHeart_beat_rate(rs.getInt("heart_beat_rate"));
+            e.setBlood_sugar(rs.getDouble("blood_sugar"));
+            e.setWhite_blood_cells(rs.getDouble("blood_sugar"));
             e.setPatientId(rs.getInt("patient_id"));
+            
             eList.add(e);
 	}
 //        System.out.print(p.toString());
@@ -89,15 +92,15 @@ public class EncounterDao {
             e.setDoctorId(rs.getInt("doctor_id"));
             e.setDiagnosis(rs.getString("diagnosis"));
             e.setEncounterId(rs.getInt("encounter_id"));
-            if(rs.getDate("end_date")!=null){
-                e.setEndDate(rs.getDate("end_date").toLocalDate());
-            }else{
-                e.setEndDate(null);
-            }
+            if(rs.getDate("end_date") != null) e.setEndDate(rs.getDate("end_date").toLocalDate());
+            else e.setEndDate(null);
             e.setStartDate(rs.getDate("start_date").toLocalDate());
             e.setState(rs.getBoolean("state"));
             e.setSymptom(rs.getString("symptom"));
-            e.setVitalSignsId(rs.getInt("vitalsign_id"));
+            e.setBlood_pressure(rs.getInt("blood_pressure"));
+            e.setHeart_beat_rate(rs.getInt("heart_beat_rate"));
+            e.setBlood_sugar(rs.getDouble("blood_sugar"));
+            e.setWhite_blood_cells(rs.getDouble("blood_sugar"));
             e.setPatientId(rs.getInt("patient_id"));
             eList.add(e);
         }
@@ -118,15 +121,15 @@ public class EncounterDao {
             e.setDoctorId(rs.getInt("doctor_id"));
             e.setDiagnosis(rs.getString("diagnosis"));
             e.setEncounterId(rs.getInt("encounter_id"));
-            if(rs.getDate("end_date")!=null){
-                e.setEndDate(rs.getDate("end_date").toLocalDate());
-            }else{
-                e.setEndDate(null);
-            }
+            if(rs.getDate("end_date") != null) e.setEndDate(rs.getDate("end_date").toLocalDate());
+            else e.setEndDate(null);
             e.setStartDate(rs.getDate("start_date").toLocalDate());
             e.setState(rs.getBoolean("state"));
             e.setSymptom(rs.getString("symptom"));
-            e.setVitalSignsId(rs.getInt("vitalsign_id"));
+            e.setBlood_pressure(rs.getInt("blood_pressure"));
+            e.setHeart_beat_rate(rs.getInt("heart_beat_rate"));
+            e.setBlood_sugar(rs.getDouble("blood_sugar"));
+            e.setWhite_blood_cells(rs.getDouble("blood_sugar"));
             e.setPatientId(rs.getInt("patient_id"));
             eList.add(e);
 	}
@@ -136,7 +139,7 @@ public class EncounterDao {
     }
 
     public Encounter getEncounterByEncounterId(int id) throws Exception{
-		
+	
 	initConnection();
         Encounter e = new Encounter();
 	String sql = "SELECT * FROM Encounter WHERE encounter_id=?";
@@ -147,15 +150,15 @@ public class EncounterDao {
             e.setDoctorId(rs.getInt("doctor_id"));
             e.setDiagnosis(rs.getString("diagnosis"));
             e.setEncounterId(rs.getInt("encounter_id"));
-            if(rs.getDate("end_date")!=null){
-                e.setEndDate(rs.getDate("end_date").toLocalDate());
-            }else{
-                e.setEndDate(null);
-            }
+            if(rs.getDate("end_date") != null) e.setEndDate(rs.getDate("end_date").toLocalDate());
+            else e.setEndDate(null);
             e.setStartDate(rs.getDate("start_date").toLocalDate());
             e.setState(rs.getBoolean("state"));
             e.setSymptom(rs.getString("symptom"));
-            e.setVitalSignsId(rs.getInt("vitalsign_id"));
+            e.setBlood_pressure(rs.getInt("blood_pressure"));
+            e.setHeart_beat_rate(rs.getInt("heart_beat_rate"));
+            e.setBlood_sugar(rs.getDouble("blood_sugar"));
+            e.setWhite_blood_cells(rs.getDouble("blood_sugar"));
             e.setPatientId(rs.getInt("patient_id"));
 	}
 	closeConnection();
@@ -183,7 +186,6 @@ public class EncounterDao {
             e.setStartDate(rs.getDate("start_date").toLocalDate());
             e.setState(rs.getBoolean("state"));
             e.setSymptom(rs.getString("symptom"));
-            e.setVitalSignsId(rs.getInt("vitalsign_id"));
             e.setPatientId(rs.getInt("patient_id"));
             eList.add(e);
 	}
@@ -234,7 +236,8 @@ public class EncounterDao {
 
         boolean res = true;
         initConnection();
-        String sql = "UPDATE Encounter SET state='" + encounter.getState() + "', vitalsign_id='" + encounter.getVitalSignsId()
+        System.out.println("dao.EncounterDao.updateEncounter()");
+        String sql = "UPDATE Encounter SET state='" + encounter.getState()+ "', blood_pressure='" + encounter.getBlood_pressure()+ "', heart_beat_rate='" + encounter.getHeart_beat_rate()+ "', blood_sugar='" + encounter.getBlood_sugar()+ "', blood_sugar='" + encounter.getBlood_sugar()
                 + "', end_date='" + encounter.getEndDate() + "', diagnosis='" + encounter.getDiagnosis() + "'" + "where encounter_id = "+ encounter.getEncounterId() ;
         try {
             Statement stat = conn.createStatement();

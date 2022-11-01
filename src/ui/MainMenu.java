@@ -10,6 +10,7 @@ import ui.doctors.DoctorProfilePage;
 import ui.doctors.DoctorHomePage;
 import ui.doctors.DoctorPatientPage;
 import javax.swing.UIManager;
+import ui.hospitalAdmin.DoctorCrud;
 import ui.patient.MyEncounter;
 import ui.patient.Appointment;
 import ui.patient.MyProfile;
@@ -43,19 +44,20 @@ public class MainMenu extends javax.swing.JFrame {
                 MyProfile mp = new MyProfile(id);
                 jTabbedPaneMenu.addTab("My Profile",new javax.swing.ImageIcon("src//icon//heroicons-ui_63.png"),mp);
                 //jTabbedPaneMenu.addTab("My Profile", mp);
-                Appointment ap = new Appointment(id);
-                jTabbedPaneMenu.addTab("Appointment", new javax.swing.ImageIcon("src//icon//icon_home.png"), ap);
-                //jTabbedPaneMenu.addTab("Appointment", ap);
-                MyEncounter me = new MyEncounter(id);
-                jTabbedPaneMenu.addTab("My Encounter", new javax.swing.ImageIcon("src//icon//icon_home.png"), me);
+//                Appointment ap = new Appointment(id);
+//                jTabbedPaneMenu.addTab("Appointment", new javax.swing.ImageIcon("src//icon//icon_home.png"), ap);
+//                //jTabbedPaneMenu.addTab("Appointment", ap);
+//                MyEncounter me = new MyEncounter(id);
+//                jTabbedPaneMenu.addTab("My Encounter", new javax.swing.ImageIcon("src//icon//icon_home.png"), me);
                 //jTabbedPaneMenu.addTab("My appointment", ec);
                 
             }
             //Choose Doctor
             case 1 -> {
-                DoctorHomePage hp = new DoctorHomePage();
+                DoctorHomePage hp = new DoctorHomePage(id);
                 DoctorProfilePage pp = new DoctorProfilePage(id);
                 DoctorPatientPage pap = new DoctorPatientPage();
+                jLabelNotification.setVisible(hp.isFlag());
                 jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//icon_home.png"), hp);
                 jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//icon_patient.png"), pap);
                 jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//icon_profile.png"), pp);
@@ -63,6 +65,8 @@ public class MainMenu extends javax.swing.JFrame {
             }
             //Choose Hospital Admin
             case 2 -> {
+                DoctorCrud dc = new DoctorCrud();
+                jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//icon_patient.png"), dc);
                 
             }
             //Choose Community Admin
