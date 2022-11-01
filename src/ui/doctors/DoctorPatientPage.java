@@ -39,6 +39,7 @@ public class DoctorPatientPage extends javax.swing.JPanel {
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(149, 177, 182));
         setPreferredSize(new java.awt.Dimension(1000, 430));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(

@@ -54,7 +54,7 @@ public class EncounterDao {
 	PreparedStatement ps = conn.prepareStatement(sql);
 	ps.setString(1, id+"");
 	ResultSet rs = ps.executeQuery();
-	if (rs.next()){
+	while(rs.next()){
             Encounter e = new Encounter();
             e.setDoctorId(rs.getInt("doctor_id"));
             e.setDiagnosis(rs.getString("diagnosis"));
@@ -116,7 +116,7 @@ public class EncounterDao {
 	PreparedStatement ps = conn.prepareStatement(sql);
 	ps.setString(1, id+"");
 	ResultSet rs = ps.executeQuery();
-	if (rs.next()){
+	while (rs.next()){
             Encounter e = new Encounter();
             e.setDoctorId(rs.getInt("doctor_id"));
             e.setDiagnosis(rs.getString("diagnosis"));
@@ -173,7 +173,7 @@ public class EncounterDao {
 	PreparedStatement ps = conn.prepareStatement(sql);
 	ps.setString(1, state+"");
 	ResultSet rs = ps.executeQuery();
-	if (rs.next()){
+	while (rs.next()){
             Encounter e = new Encounter();
             e.setDoctorId(rs.getInt("doctor_id"));
             e.setDiagnosis(rs.getString("diagnosis"));
@@ -237,7 +237,10 @@ public class EncounterDao {
         boolean res = true;
         initConnection();
         System.out.println("dao.EncounterDao.updateEncounter()");
-        String sql = "UPDATE Encounter SET state='" + encounter.getState()+ "', blood_pressure='" + encounter.getBlood_pressure()+ "', heart_beat_rate='" + encounter.getHeart_beat_rate()+ "', blood_sugar='" + encounter.getBlood_sugar()+ "', blood_sugar='" + encounter.getBlood_sugar()
+        int state;
+        if(encounter.getState() == true) state = 1;
+        else state = 0;
+        String sql = "UPDATE Encounter SET state='" + state+ "', blood_pressure='" + encounter.getBlood_pressure()+ "', heart_beat_rate='" + encounter.getHeart_beat_rate()+ "', blood_sugar='" + encounter.getBlood_sugar()+ "', blood_sugar='" + encounter.getBlood_sugar()
                 + "', end_date='" + encounter.getEndDate() + "', diagnosis='" + encounter.getDiagnosis() + "'" + "where encounter_id = "+ encounter.getEncounterId() ;
         try {
             Statement stat = conn.createStatement();

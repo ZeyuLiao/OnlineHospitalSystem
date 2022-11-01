@@ -3,15 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/ziyu/Documents/GitHub/OnlineHospitalSystem/src/ui/community/CommunityCRUD.java</file>
-            <file>file:/Users/ziyu/Documents/GitHub/OnlineHospitalSystem/src/dao/PatientDao.java</file>
-            <file>file:/Users/ziyu/Documents/GitHub/OnlineHospitalSystem/src/ui/hospital/HospitalCrud.java</file>
-            <file>file:/Users/ziyu/Documents/GitHub/OnlineHospitalSystem/src/model/Community.java</file>
-            <file>file:/Users/ziyu/Documents/GitHub/OnlineHospitalSystem/src/ui/patient/PatientCrud.java</file>
-            <file>file:/Users/ziyu/Documents/GitHub/OnlineHospitalSystem/src/dao/CommunityDao.java</file>
-            <file>file:/Users/ziyu/Documents/GitHub/OnlineHospitalSystem/src/ui/patient/UpdatePatient.java</file>
-            <file>file:/Users/ziyu/Documents/GitHub/OnlineHospitalSystem/src/model/UserType.java</file>
-            <file>file:/Users/ziyu/Documents/GitHub/OnlineHospitalSystem/src/ui/hospital/AddHospital.java</file>
+            <file>file:/C:/Users/ZeyuLiao/Documents/NetBeansProjects/OnlineHospitalSystem/src/model/Encounter.java</file>
+            <file>file:/C:/Users/ZeyuLiao/Documents/NetBeansProjects/OnlineHospitalSystem/src/ui/MainMenu.java</file>
+            <file>file:/C:/Users/ZeyuLiao/Documents/NetBeansProjects/OnlineHospitalSystem/src/ui/Entrance.java</file>
+            <file>file:/C:/Users/ZeyuLiao/Documents/NetBeansProjects/OnlineHospitalSystem/src/ui/doctors/DoctorHomePage.java</file>
+            <file>file:/C:/Users/ZeyuLiao/Documents/NetBeansProjects/OnlineHospitalSystem/src/dao/EncounterDao.java</file>
         </group>
     </open-files>
 </project-private>
