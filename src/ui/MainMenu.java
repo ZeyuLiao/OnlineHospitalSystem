@@ -16,6 +16,7 @@ import ui.hospitalAdmin.DoctorCrud;
 import ui.patient.MyEncounter;
 import ui.patient.Appointment;
 import ui.patient.MyProfile;
+import ui.patient.PatientCrud;
 
 
 /**
@@ -79,7 +80,10 @@ public class MainMenu extends javax.swing.JFrame {
             //Choose System Admin
             case 4-> {
                CommunityCRUD cc = new CommunityCRUD();
-               jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//icon_home.png"), cc);
+               PatientCrud pc = new PatientCrud();
+               jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//heroicons-ui_21.png"), cc);
+               jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//icon_profile.png"), pc);
+               
             }
             
             default -> {
