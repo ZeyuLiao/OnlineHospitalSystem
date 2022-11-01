@@ -74,14 +74,18 @@ public class MainMenu extends javax.swing.JFrame {
             //Choose Community Admin
             case 3 ->{
                HospitalCrud hc = new HospitalCrud();
-               jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//icon_home.png"), hc);
+               jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//hospital.png"), hc);
             }
             
             //Choose System Admin
             case 4-> {
                CommunityCRUD cc = new CommunityCRUD();
+               HospitalCrud  hc = new HospitalCrud();
+               
                PatientCrud pc = new PatientCrud();
-               jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//heroicons-ui_21.png"), cc);
+               
+               jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//community.png"), cc);
+               jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//hospital.png"), hc);
                jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//icon_profile.png"), pc);
                
             }
