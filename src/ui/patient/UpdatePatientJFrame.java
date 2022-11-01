@@ -69,6 +69,24 @@ public class UpdatePatientJFrame extends javax.swing.JFrame {
 
         jLabel5.setText("Phone Number:");
 
+        jTextFieldName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextFieldNameMouseClicked(evt);
+            }
+        });
+
+        jTextFieldPhoneNumber.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextFieldPhoneNumberMouseClicked(evt);
+            }
+        });
+
+        jTextFieldDOB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextFieldDOBMouseClicked(evt);
+            }
+        });
+
         jButtonSubmit.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 14)); // NOI18N
         jButtonSubmit.setText("Submit");
         jButtonSubmit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -141,7 +159,7 @@ public class UpdatePatientJFrame extends javax.swing.JFrame {
                     .addComponent(jComboBoxCName, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
                 .addGap(35, 35, 35)
                 .addComponent(jButtonSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         jLabel2.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
@@ -158,8 +176,8 @@ public class UpdatePatientJFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -218,6 +236,44 @@ public class UpdatePatientJFrame extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_jButtonSubmitActionPerformed
+
+    private void jTextFieldNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldNameMouseClicked
+        // TODO add your handling code here:
+        String name = jTextFieldName.getText();
+        if(name.isEmpty()){
+            jLabelName.setText("Name is empty");
+        }
+    }//GEN-LAST:event_jTextFieldNameMouseClicked
+
+    private void jTextFieldPhoneNumberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldPhoneNumberMouseClicked
+        // TODO add your handling code here:
+        String phoneNumber = jTextFieldPhoneNumber.getText();
+        if(phoneNumber.isEmpty()){
+            jLabelPhoneNumber.setText("Phone Number is empty");
+        }else{
+            for(char c:phoneNumber.toCharArray()){
+                if(c>'9' || c<'0'){
+                    jLabelDOB.setText("Wrong Phone Number");
+                }
+            }
+        }
+    }//GEN-LAST:event_jTextFieldPhoneNumberMouseClicked
+
+    private void jTextFieldDOBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldDOBMouseClicked
+        // TODO add your handling code here:
+        String DOB = jTextFieldDOB.getText();
+        if(DOB.isEmpty()){
+            jLabelDOB.setText("Year of birth is empty");
+        }else if(DOB.length()!=4){
+            jLabelDOB.setText("Wrong fommat Year of birth");
+        }else{
+            for(char c:DOB.toCharArray()){
+                if(c>'9' || c<'0'){
+                    jLabelDOB.setText("Wrong Year of birth");
+                }
+            }
+        }
+    }//GEN-LAST:event_jTextFieldDOBMouseClicked
 
     /**
      * @param args the command line arguments
