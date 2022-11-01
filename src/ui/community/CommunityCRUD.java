@@ -361,9 +361,9 @@ public class CommunityCRUD extends javax.swing.JPanel {
         
         model.setRowCount(0);
         
-        for(Community p:cList){
+        for(Community c:cList){
             Object[] row = new Object[10];
-            addTableRow(row,p);
+            addTableRow(row,c);
             
             model.addRow(row);     
         }

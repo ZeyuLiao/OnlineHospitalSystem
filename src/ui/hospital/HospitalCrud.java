@@ -27,7 +27,7 @@ public class HospitalCrud extends javax.swing.JPanel {
      */
     HospitalDao hDao;
     public HospitalCrud() throws Exception{
-        hDao = new HospitalDao();
+        this.hDao = new HospitalDao();
         initComponents();
         showTable();
     }
@@ -276,6 +276,7 @@ public class HospitalCrud extends javax.swing.JPanel {
     private void jButtonViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonViewActionPerformed
         // TODO add your handling code here:
         int selectedIndex = jTableHospital.getSelectedRow();
+        System.out.print(selectedIndex);
         if(selectedIndex < 0){
             JOptionPane.showMessageDialog(this,"Please select a row to view");
             return;

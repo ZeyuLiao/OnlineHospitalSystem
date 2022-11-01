@@ -3,8 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ui.patient;
+import dao.CommunityDao;
 import dao.PatientDao;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import model.Community;
 import model.Patient;
 import ui.Entrance;
 
@@ -17,11 +20,22 @@ public class UpdatePatientJFrame extends javax.swing.JFrame {
     /**
      * Creates new form UpdatePatientJFrame
      */
+
+
     Patient p;
     PatientDao pDao;
+    CommunityDao cDao;
+    ArrayList<String> cName;
     public UpdatePatientJFrame(int patientId) throws Exception{
-        initComponents();
+        this.cDao = new CommunityDao();
+        this.cName = new ArrayList<>();
+        try {
+            getCommunityName();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         
+        initComponents();
         
         pDao = new PatientDao();
         p = pDao.getPatientById(patientId);
@@ -30,6 +44,12 @@ public class UpdatePatientJFrame extends javax.swing.JFrame {
         jTextFieldPhoneNumber.setText(p.getPhoneNumber());
         jComboBoxCName.setSelectedItem(p.getCommunityName());
         this.setVisible(true);
+    }
+    void getCommunityName() throws Exception{
+        ArrayList<Community> cList = cDao.getAllCommunity();
+        for(Community c:cList){
+            cName.add(c.getCommunityName());
+        }
     }
 
     private UpdatePatientJFrame() {
@@ -55,7 +75,13 @@ public class UpdatePatientJFrame extends javax.swing.JFrame {
         jTextFieldDOB = new javax.swing.JTextField();
         jButtonSubmit = new javax.swing.JButton();
         jLabelName = new javax.swing.JLabel();
-        jComboBoxCName = new javax.swing.JComboBox<>();
+        String[] str = new String[cName.size()];
+        int i = 0;
+        for(String c:cName){
+            str[i]=c;
+            i++;
+        }
+        jComboBoxCName = new javax.swing.JComboBox<>(str);
         jLabelPhoneNumber = new javax.swing.JLabel();
         jLabelDOB = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -101,8 +127,6 @@ public class UpdatePatientJFrame extends javax.swing.JFrame {
 
         jLabelName.setForeground(new java.awt.Color(255, 0, 0));
 
-        jComboBoxCName.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Toronto Downtown", "North York", "Markham", "Scarborough" }));
-
         jLabelPhoneNumber.setForeground(new java.awt.Color(255, 0, 0));
 
         jLabelDOB.setForeground(new java.awt.Color(255, 0, 0));
@@ -116,7 +140,7 @@ public class UpdatePatientJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabelName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextFieldName, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)))
@@ -126,13 +150,14 @@ public class UpdatePatientJFrame extends javax.swing.JFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
                         .addGap(26, 26, 26)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabelPhoneNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldPhoneNumber)
-                            .addComponent(jTextFieldDOB)
-                            .addComponent(jButtonSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxCName, 0, 255, Short.MAX_VALUE)
-                            .addComponent(jLabelDOB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTextFieldPhoneNumber)
+                                .addComponent(jTextFieldDOB)
+                                .addComponent(jButtonSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jComboBoxCName, 0, 255, Short.MAX_VALUE)
+                                .addComponent(jLabelDOB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(

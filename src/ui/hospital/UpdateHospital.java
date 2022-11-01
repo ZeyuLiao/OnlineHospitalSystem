@@ -131,7 +131,7 @@ public class UpdateHospital extends javax.swing.JFrame {
         if(hName.isEmpty()){
             JOptionPane.showMessageDialog(this,"Please enter a valid name");
         }
-        
+        hospital.setHospitalName(hName);
         try {
             hDao.updateHospital(hospital);
             JOptionPane.showMessageDialog(this,"Success");
