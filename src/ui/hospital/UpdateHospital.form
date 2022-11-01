@@ -33,9 +33,9 @@
                           <Component id="lblHosName" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="txtUpdateHName" min="-2" pref="136" max="-2" attributes="0"/>
-                          <Component id="txtUpdateCommunity" min="-2" pref="136" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtUpdateHName" pref="136" max="32767" attributes="0"/>
+                          <Component id="cmbCommunity" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="86" max="32767" attributes="0"/>
                   </Group>
@@ -62,7 +62,7 @@
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblBelongCom" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtUpdateCommunity" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbCommunity" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="64" max="32767" attributes="0"/>
               <Component id="jButton1" min="-2" pref="34" max="-2" attributes="0"/>
@@ -87,8 +87,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUpdateHNameActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtUpdateCommunity">
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -106,6 +104,21 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmbCommunity">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="North York"/>
+            <StringItem index="1" value="Toronto Downtown"/>
+            <StringItem index="2" value="Markham"/>
+            <StringItem index="3" value="Scarborough"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

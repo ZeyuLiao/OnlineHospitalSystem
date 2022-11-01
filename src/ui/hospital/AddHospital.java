@@ -115,6 +115,7 @@ public class AddHospital extends javax.swing.JFrame {
         try {
             hospitalDao.addHospital(hospital);
             JOptionPane.showMessageDialog(this,"Success");
+            dispose();
         } catch (Exception ex) {
             //Logger.getLogger(AddHospital.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();
