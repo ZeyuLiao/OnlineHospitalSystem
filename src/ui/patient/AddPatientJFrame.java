@@ -4,8 +4,13 @@
  */
 package ui.patient;
 
+import dao.CommunityDao;
 import dao.PatientDao;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import model.Community;
 import model.Patient;
 
 /**
@@ -17,9 +22,26 @@ public class AddPatientJFrame extends javax.swing.JFrame {
     /**
      * Creates new form AddPatientJFrame
      */
+    CommunityDao cDao;
+    ArrayList<String> cName;
     public AddPatientJFrame() {
+        this.cDao = new CommunityDao();
+        this.cName = new ArrayList<>();
+        try {
+            getCommunityName();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         initComponents();
+        
     }
+    void getCommunityName() throws Exception{
+        ArrayList<Community> cList = cDao.getAllCommunity();
+        for(Community c:cList){
+            cName.add(c.getCommunityName());
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,7 +62,13 @@ public class AddPatientJFrame extends javax.swing.JFrame {
         jTextFieldDOB = new javax.swing.JTextField();
         jButtonSubmit = new javax.swing.JButton();
         jLabelName = new javax.swing.JLabel();
-        jComboBoxCName = new javax.swing.JComboBox<>();
+        String[] str = new String[cName.size()];
+        int i = 0;
+        for(String c:cName){
+            str[i]=c;
+            i++;
+        }
+        jComboBoxCName = new javax.swing.JComboBox<>(str);
         jLabelPhoneNumber = new javax.swing.JLabel();
         jLabelDOB = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -83,8 +111,6 @@ public class AddPatientJFrame extends javax.swing.JFrame {
         });
 
         jLabelName.setForeground(new java.awt.Color(255, 0, 0));
-
-        jComboBoxCName.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Toronto Downtown", "North York", "Markham", "Scarborough" }));
 
         jLabelPhoneNumber.setForeground(new java.awt.Color(255, 0, 0));
 
