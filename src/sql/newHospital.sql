@@ -19,7 +19,7 @@
 #create table communityList first
 create table HospitalList(
 hospital_id INT PRIMARY KEY AUTO_INCREMENT,
-hospital_name VARCHAR(50) not null,
+hospital_name VARCHAR(50) not null unique,
 hospital_communityname VARCHAR(50) not null,
 CONSTRAINT fk_HospitalList_communityname FOREIGN KEY (hospital_communityname) REFERENCES communityList(community_name)  ON UPDATE CASCADE ON DELETE CASCADE
 );
