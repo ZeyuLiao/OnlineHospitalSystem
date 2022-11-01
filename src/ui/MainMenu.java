@@ -75,10 +75,15 @@ public class MainMenu extends javax.swing.JFrame {
                HospitalCrud hc = new HospitalCrud();
                jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//icon_home.png"), hc);
             }
+            
             //Choose System Admin
+            case 4-> {
+               CommunityCRUD cc = new CommunityCRUD();
+               jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//icon_home.png"), cc);
+            }
+            
             default -> {
-                CommunityCRUD cc = new CommunityCRUD();
-                 jTabbedPaneMenu.addTab("", new javax.swing.ImageIcon("src//icon//icon_home.png"), cc);
+    
                 
             }
         }       
