@@ -31,8 +31,7 @@ public class EncounterDao {
     
     public void initConnection() throws Exception{
 		
-	Class.forName(JDBC_DRIVER);  
-    	String url = "jdbc:mysql://localhost:3306/javaweb?serverTimezone=CTT";  
+	Class.forName(JDBC_DRIVER);    
     	conn = DriverManager.getConnection(DB_URL, USER, PASS);
 	}
     /*
@@ -61,7 +60,11 @@ public class EncounterDao {
             e.setDoctorId(rs.getInt("doctor_id"));
             e.setDiagnosis(rs.getString("diagnosis"));
             e.setEncounterId(rs.getInt("encounter_id"));
-            e.setEndDate(rs.getDate("end_date").toLocalDate());
+            if(rs.getDate("end_date")!=null){
+                e.setEndDate(rs.getDate("end_date").toLocalDate());
+            }else{
+                e.setEndDate(null);
+            }
             e.setStartDate(rs.getDate("start_date").toLocalDate());
             e.setState(rs.getBoolean("state"));
             e.setSymptom(rs.getString("symptom"));
@@ -86,7 +89,11 @@ public class EncounterDao {
             e.setDoctorId(rs.getInt("doctor_id"));
             e.setDiagnosis(rs.getString("diagnosis"));
             e.setEncounterId(rs.getInt("encounter_id"));
-            e.setEndDate(rs.getDate("end_date").toLocalDate());
+            if(rs.getDate("end_date")!=null){
+                e.setEndDate(rs.getDate("end_date").toLocalDate());
+            }else{
+                e.setEndDate(null);
+            }
             e.setStartDate(rs.getDate("start_date").toLocalDate());
             e.setState(rs.getBoolean("state"));
             e.setSymptom(rs.getString("symptom"));
@@ -111,7 +118,11 @@ public class EncounterDao {
             e.setDoctorId(rs.getInt("doctor_id"));
             e.setDiagnosis(rs.getString("diagnosis"));
             e.setEncounterId(rs.getInt("encounter_id"));
-            e.setEndDate(rs.getDate("end_date").toLocalDate());
+            if(rs.getDate("end_date")!=null){
+                e.setEndDate(rs.getDate("end_date").toLocalDate());
+            }else{
+                e.setEndDate(null);
+            }
             e.setStartDate(rs.getDate("start_date").toLocalDate());
             e.setState(rs.getBoolean("state"));
             e.setSymptom(rs.getString("symptom"));
@@ -136,7 +147,11 @@ public class EncounterDao {
             e.setDoctorId(rs.getInt("doctor_id"));
             e.setDiagnosis(rs.getString("diagnosis"));
             e.setEncounterId(rs.getInt("encounter_id"));
-            e.setEndDate(rs.getDate("end_date").toLocalDate());
+            if(rs.getDate("end_date")!=null){
+                e.setEndDate(rs.getDate("end_date").toLocalDate());
+            }else{
+                e.setEndDate(null);
+            }
             e.setStartDate(rs.getDate("start_date").toLocalDate());
             e.setState(rs.getBoolean("state"));
             e.setSymptom(rs.getString("symptom"));
@@ -145,6 +160,35 @@ public class EncounterDao {
 	}
 	closeConnection();
 	return e;
+    }
+    
+    public ArrayList<Encounter> getEncounterByState(int state) throws Exception{
+		
+	initConnection();
+        ArrayList<Encounter> eList = new ArrayList();
+	String sql = "SELECT * FROM Encounter WHERE state=?";
+	PreparedStatement ps = conn.prepareStatement(sql);
+	ps.setString(1, state+"");
+	ResultSet rs = ps.executeQuery();
+	if (rs.next()){
+            Encounter e = new Encounter();
+            e.setDoctorId(rs.getInt("doctor_id"));
+            e.setDiagnosis(rs.getString("diagnosis"));
+            e.setEncounterId(rs.getInt("encounter_id"));
+            if(rs.getDate("end_date")!=null){
+                e.setEndDate(rs.getDate("end_date").toLocalDate());
+            }else{
+                e.setEndDate(null);
+            }
+            e.setStartDate(rs.getDate("start_date").toLocalDate());
+            e.setState(rs.getBoolean("state"));
+            e.setSymptom(rs.getString("symptom"));
+            e.setVitalSignsId(rs.getInt("vitalsign_id"));
+            e.setPatientId(rs.getInt("patient_id"));
+            eList.add(e);
+	}
+	closeConnection();
+	return eList;
     }
 
     public boolean createEncounter(int patientId,int doctorId,int state,LocalDate startDate,String symptom) throws Exception{
