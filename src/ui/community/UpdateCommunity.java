@@ -115,6 +115,8 @@ public class UpdateCommunity extends javax.swing.JFrame {
         c.setCommunityName(name);
         try {
             cDao.updateCommunity(c);
+            JOptionPane.showMessageDialog(this,"Success");
+            dispose();
         } catch (Exception ex) {
             //Logger.getLogger(UpdateCommunity.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();

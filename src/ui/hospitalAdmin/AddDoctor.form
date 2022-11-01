@@ -122,9 +122,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButtonUpload">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Upload"/>
               </Properties>
               <Events>
@@ -132,7 +129,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="80" y="240" width="78" height="-1"/>
+                  <AbsoluteConstraints x="80" y="231" width="78" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -280,9 +277,6 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Name:"/>
               </Properties>
             </Component>
@@ -300,25 +294,16 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Hospital Name:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Department: "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Phone Number:"/>
               </Properties>
             </Component>
@@ -326,9 +311,6 @@
         </Container>
         <Component class="javax.swing.JButton" name="jButtonSubmit">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="0"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Submit"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
@@ -372,7 +354,7 @@
                   <Font name="Times New Roman" size="24" style="0"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Sign up"/>
+                <Property name="text" type="java.lang.String" value="Create Doctor Profile"/>
               </Properties>
             </Component>
           </SubComponents>
