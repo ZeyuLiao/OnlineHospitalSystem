@@ -256,14 +256,6 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="12" style="0"/>
                 </Property>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Downtown Hospital"/>
-                    <StringItem index="1" value="North York Hospital"/>
-                    <StringItem index="2" value="Markham Hospital"/>
-                    <StringItem index="3" value="Scarborough Hospital"/>
-                  </StringArray>
-                </Property>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

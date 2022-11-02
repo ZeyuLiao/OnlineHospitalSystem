@@ -4,15 +4,20 @@
  */
 package ui.hospitalAdmin;
 
+import dao.CommunityDao;
 import dao.DoctorDao;
+import dao.HospitalDao;
 import static java.awt.Image.SCALE_DEFAULT;
 import java.io.File;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import model.Community;
 import model.Doctor;
 import ui.Entrance;
+import model.Hospital;
 
 /**
  *
@@ -22,16 +27,32 @@ public class AddDoctor extends javax.swing.JFrame {
     
     private String filepath;
     private final int[] flag = {0,0,0};
-
+    HospitalDao hDao;
+    ArrayList<String> hName;
     /**
      * Creates new form AddPatientJFrame
      */
     public AddDoctor() {
+        
+        this.hDao = new HospitalDao();
+        this.hName = new ArrayList<>();
+        try {
+            getHospitalName();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         initComponents();
         jLabelNameNotice.setVisible(false);
         jLabelPhoneNumberNotice.setVisible(false);
         jLabelDepartmentNotice.setVisible(false);
         
+    }
+    
+    void getHospitalName() throws Exception{
+        ArrayList<Hospital> hList = hDao.getAllHospital();
+        for(Hospital h:hList){
+            hName.add(h.hospitalName);
+        }
     }
 
     /**
@@ -113,7 +134,13 @@ public class AddDoctor extends javax.swing.JFrame {
         jLabelNameNotice.setText("You must input your name");
 
         jComboBoxCHospital.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jComboBoxCHospital.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Downtown Hospital", "North York Hospital", "Markham Hospital", "Scarborough Hospital" }));
+        String[] str = new String[hName.size()];
+        int i = 0;
+        for(String h:hName){
+            str[i] = h;
+            i++;
+        }
+        jComboBoxCHospital.setModel(new javax.swing.DefaultComboBoxModel<>(str));
 
         jLabelPhoneNumberNotice.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         jLabelPhoneNumberNotice.setForeground(new java.awt.Color(255, 51, 51));
