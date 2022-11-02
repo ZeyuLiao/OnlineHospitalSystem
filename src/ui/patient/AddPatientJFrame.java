@@ -66,7 +66,7 @@ public class AddPatientJFrame extends javax.swing.JFrame {
         String[] str = new String[cName.size()];
         int i = 0;
         for(String c:cName){
-            str[i]=c;
+            str[i] = c;
             i++;
         }
         jComboBoxCName = new javax.swing.JComboBox<>(str);

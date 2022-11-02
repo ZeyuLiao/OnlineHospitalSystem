@@ -182,17 +182,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBoxCName">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Toronto Downtown"/>
-                <StringItem index="1" value="North York"/>
-                <StringItem index="2" value="Markham"/>
-                <StringItem index="3" value="Scarborough"/>
-              </StringArray>
-            </Property>
-          </Properties>
           <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox&lt;&gt;(str)"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="String[] str = new String[cName.size()];&#xa;int i = 0;&#xa;for(String c:cName){&#xa;    str[i] = c;&#xa;    i++;&#xa;}"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
