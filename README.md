@@ -9,6 +9,7 @@ Zeyu Liao, Ruolin Li, Ziyu Lu
 
 - Databse Design. 
   - Use JDBC Driver for MySQL
+  - Use NOT NULL, UNIQUE, Primary Key
   - Use foreign key，Cascade delete and Cascade update to ensure data integrity
   - The table structure is concise and clear, meeting 3NF Database Paradigm
 
@@ -22,8 +23,9 @@ Zeyu Liao, Ruolin Li, Ziyu Lu
   - Implement picture display, supporting picture upload
 
 - Have strong data validation
-  - Including various test scenarios
-  - Including Outlier and Null checks
+  - Include various test scenarios
+  - Include Outlier and Null checks
+  - Have Timely-updated Dynamic comboBox
 
 ## Implemented rich multi-role features：
 
@@ -38,4 +40,7 @@ Zeyu Liao, Ruolin Li, Ziyu Lu
  ## Class diagram
  ![926f659cd50fe02ac1531841e85a9d3](https://user-images.githubusercontent.com/113488430/199385029-36a81eaf-09a3-41c9-95d7-b2dc06a608a3.png)
 
+ ## Sequence Diagram
+ ![sequense diagram-hospital](https://user-images.githubusercontent.com/113486280/199387611-15f25dd5-f783-41a6-9456-a3cb53a9b62a.png)
 
+ 
