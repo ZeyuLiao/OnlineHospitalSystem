@@ -265,9 +265,15 @@ public class HospitalCrud extends javax.swing.JPanel {
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
         // TODO add your handling code here:
-        AddHospital add = new AddHospital();
+        AddHospital add;
+        try {
+            add = new AddHospital();
+             add.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(HospitalCrud.class.getName()).log(Level.SEVERE, null, ex);
+        }
 //        add.setBounds(100, 100, 750, 500);
-        add.setVisible(true);
+       
         try {
             showTable();
         } catch (Exception ex) {

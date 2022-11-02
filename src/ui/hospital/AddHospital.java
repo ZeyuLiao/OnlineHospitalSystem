@@ -5,7 +5,11 @@
 package ui.hospital;
 
 
+import dao.CommunityDao;
 import dao.HospitalDao;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Hospital;
 
@@ -18,8 +22,16 @@ public class AddHospital extends javax.swing.JFrame {
     /**
      * Creates new form AddHospital
      */
-    public AddHospital() {
+    ArrayList<String> communityNames;
+    
+    public AddHospital() throws Exception {
+        
+        CommunityDao communityDao= new CommunityDao();
+        communityNames = new ArrayList<String>();
+        communityNames = communityDao.getCommunityNames();
         initComponents();
+        
+        
     }
 
     /**
@@ -35,6 +47,11 @@ public class AddHospital extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtHospitalName = new javax.swing.JTextField();
+        String[] str = new String[communityNames.size()];
+        int index = 0;
+        for(String s: communityNames){
+            str[index++] = s;
+        }
         cmbCommunity = new javax.swing.JComboBox<>();
         btnSave = new javax.swing.JButton();
 
@@ -48,7 +65,7 @@ public class AddHospital extends javax.swing.JFrame {
 
         jLabel3.setText("belong to community:");
 
-        cmbCommunity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "North York", "Toronto Downtown", "Markham", "Scarborough" }));
+        cmbCommunity.setModel(new javax.swing.DefaultComboBoxModel<>(str));
 
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -156,7 +173,11 @@ public class AddHospital extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddHospital().setVisible(true);
+                try {
+                    new AddHospital().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(AddHospital.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

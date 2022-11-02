@@ -35,7 +35,21 @@ public class CommunityDao {
     	conn = DriverManager.getConnection(DB_URL, USER, PASS);
 	}
     
-    
+    public ArrayList<String> getCommunityNames() throws Exception{
+		
+        ArrayList<String> communityNames = new ArrayList<String>();
+        initConnection();
+        String sql = "SELECT community_name FROM CommunityList";
+        Statement stat = conn.createStatement();
+        ResultSet rs = stat.executeQuery(sql);
+        int index = 1;
+        while(rs.next()){
+            communityNames.add(rs.getString("community_name"));
+            index++;
+        }
+        closeConnection();
+        return communityNames;	
+    }
           
       public ArrayList<Community> getAllCommunity() throws Exception{
 		

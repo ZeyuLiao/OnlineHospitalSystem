@@ -4,7 +4,9 @@
  */
 package ui.hospital;
 
+import dao.CommunityDao;
 import dao.HospitalDao;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -22,8 +24,12 @@ public class UpdateHospital extends javax.swing.JFrame {
     
     Hospital hospital;
     HospitalDao hDao;
+    ArrayList<String> communityNames;
     public UpdateHospital(int hospitalId) throws Exception {
         initComponents();
+        CommunityDao communityDao= new CommunityDao();
+        communityNames = new ArrayList<String>();
+        communityNames = communityDao.getCommunityNames();
         //加一个刷新community combobox 
         hDao = new HospitalDao();
         hospital = hDao.getHospitalById(hospitalId);
@@ -51,6 +57,11 @@ public class UpdateHospital extends javax.swing.JFrame {
         txtUpdateHName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        String[] str = new String[communityNames.size()];
+        int index = 0;
+        for(String s: communityNames){
+            str[index++] = s;
+        }
         cmbCommunity = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -77,7 +88,7 @@ public class UpdateHospital extends javax.swing.JFrame {
             }
         });
 
-        cmbCommunity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "North York", "Toronto Downtown", "Markham", "Scarborough" }));
+        cmbCommunity.setModel(new javax.swing.DefaultComboBoxModel<>(str));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
