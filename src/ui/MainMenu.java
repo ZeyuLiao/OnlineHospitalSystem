@@ -8,7 +8,6 @@ import static java.awt.Image.SCALE_DEFAULT;
 import javax.swing.ImageIcon;
 import ui.doctors.DoctorProfilePage;
 import ui.doctors.DoctorHomePage;
-import javax.swing.UIManager;
 import ui.community.CommunityCRUD;
 import ui.doctors.DoctorEncounterPage;
 import ui.hospital.HospitalCrud;
@@ -47,7 +46,7 @@ public class MainMenu extends javax.swing.JFrame {
                 MyProfile mp = new MyProfile(id);
                 jTabbedPaneMenu.addTab("My Profile",new javax.swing.ImageIcon("src//icon//heroicons-ui_63.png"),mp);
                 Appointment ap = new Appointment(id);
-                jTabbedPaneMenu.addTab("Appointment", new javax.swing.ImageIcon("src//icon//icon_home.png"), ap);
+                jTabbedPaneMenu.addTab("Appointment", new javax.swing.ImageIcon("src//icon//icon_appointment.png"), ap);
                 //jTabbedPaneMenu.addTab("Appointment", ap);
                 MyEncounter me = new MyEncounter(id);
                 jTabbedPaneMenu.addTab("My Encounter", new javax.swing.ImageIcon("src//icon//icon_home.png"), me);
