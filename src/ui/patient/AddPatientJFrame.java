@@ -252,6 +252,7 @@ public class AddPatientJFrame extends javax.swing.JFrame {
         PatientDao pDao = new PatientDao();
         try {
             pDao.addPatient(p);
+            JOptionPane.showMessageDialog(rootPane, "Your ID is:" + pDao.getPatientByName(p.getName()).get(0).getPatientId());
             JOptionPane.showMessageDialog(this,"Success");
             dispose();
         } catch (Exception ex) {

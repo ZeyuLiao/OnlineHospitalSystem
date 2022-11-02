@@ -208,12 +208,12 @@ public class Entrance extends javax.swing.JFrame {
      */
     public static void main(String args[]) throws Exception {
         /* Set the Nimbus look and feel */
-        // try{
-        //     UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-        //     }catch(Exception e){
-        //     System.out.println("主题出错");
-        //     e.printStackTrace();
-        //     }
+         try{
+             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+             }catch(Exception e){
+             System.out.println("Error Theme");
+             e.printStackTrace();
+             }
         // /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
