@@ -1,6 +1,10 @@
 # 5100 Assignment3 OnlineHospitalSystem
 Cheers love! Ambulance here!
 
+## Contributors
+
+Zeyu Liao, Ruolin Li, Ziyu Lu
+
 ## Important features
 
 - Databse Design. 
@@ -31,7 +35,7 @@ Cheers love! Ambulance here!
   - Community Admin can manage hospital profile
   - System Admin can manage patient, hospital, community
  
- Class diagram
+ ## Class diagram
  ![926f659cd50fe02ac1531841e85a9d3](https://user-images.githubusercontent.com/113488430/199385029-36a81eaf-09a3-41c9-95d7-b2dc06a608a3.png)
 
 
