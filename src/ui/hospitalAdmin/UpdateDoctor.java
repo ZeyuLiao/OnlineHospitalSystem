@@ -5,14 +5,17 @@
 package ui.hospitalAdmin;
 
 import dao.DoctorDao;
+import dao.HospitalDao;
 import static java.awt.Image.SCALE_DEFAULT;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import model.Doctor;
+import model.Hospital;
 
 /**
  *
@@ -24,12 +27,21 @@ public class UpdateDoctor extends javax.swing.JFrame {
     DoctorDao dDao;
     private final int[] flag = {1,1,1};
     private String filepath;
+    HospitalDao hDao;
+    ArrayList<String> hName;
     /**
      * Creates new form AddPatientJFrame
      * @param doctorId
      * @throws java.lang.Exception
      */
     public UpdateDoctor(int doctorId) throws Exception {
+        this.hDao = new HospitalDao();
+        this.hName = new ArrayList<>();
+        try {
+            getHospitalName();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         initComponents();
         jLabelNameNotice.setVisible(false);
         jLabelPhoneNumberNotice.setVisible(false);
@@ -45,6 +57,13 @@ public class UpdateDoctor extends javax.swing.JFrame {
         jLabelPhoto.setIcon(img);
         
     }
+    void getHospitalName() throws Exception{
+        ArrayList<Hospital> hList = hDao.getAllHospital();
+        for(Hospital h:hList){
+            hName.add(h.hospitalName);
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -125,7 +144,6 @@ public class UpdateDoctor extends javax.swing.JFrame {
         jLabelNameNotice.setText("You must input your name");
 
         jComboBoxCHospital.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jComboBoxCHospital.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Downtown Hospital", "North York Hospital", "Markham Hospital", "Scarborough Hospital" }));
 
         jLabelPhoneNumberNotice.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         jLabelPhoneNumberNotice.setForeground(new java.awt.Color(255, 51, 51));
