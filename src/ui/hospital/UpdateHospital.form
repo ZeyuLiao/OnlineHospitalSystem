@@ -107,16 +107,12 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="cmbCommunity">
       <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="North York"/>
-            <StringItem index="1" value="Toronto Downtown"/>
-            <StringItem index="2" value="Markham"/>
-            <StringItem index="3" value="Scarborough"/>
-          </StringArray>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(str)" type="code"/>
         </Property>
       </Properties>
       <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="String[] str = new String[communityNames.size()];&#xa;int index = 0;&#xa;for(String s: communityNames){&#xa;    str[index++] = s;&#xa;}"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
