@@ -12,6 +12,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import model.Doctor;
+import ui.Entrance;
 
 /**
  *
@@ -65,6 +66,7 @@ public class AddDoctor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add New Doctor");
         setBackground(new java.awt.Color(149, 177, 182));
+        setIconImage(Entrance.logo.getImage());
         setLocationByPlatform(true);
 
         jPanel1.setBackground(new java.awt.Color(149, 177, 182));

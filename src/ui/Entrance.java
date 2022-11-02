@@ -4,11 +4,15 @@
  */
 package ui;
 
+import dao.DoctorDao;
+import dao.PatientDao;
 import static java.awt.Image.SCALE_DEFAULT;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import ui.patient.AddPatientJFrame;
 
 /**
  *
@@ -25,9 +29,10 @@ public class Entrance extends javax.swing.JFrame {
 //        swingTheme.init();
 //        
 //    }
-    
+    static public ImageIcon logo = new ImageIcon("src//image//ImageLogo.png");
+
     public Entrance() {
-        initComponents();                 
+        initComponents();  
     }
 
     /**
@@ -44,17 +49,16 @@ public class Entrance extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jComboBoxUserType = new javax.swing.JComboBox<>();
         jTextFieldAccount = new javax.swing.JTextField();
-        jPasswordFieldPassword = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        jButtonlogin = new javax.swing.JButton();
+        jLabelSignUP = new javax.swing.JLabel();
         jLabelLogo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("OnlineHospitalSystem");
+        setIconImage(logo.getImage());
         setLocation(new java.awt.Point(300, 150));
 
         jPanel2.setBackground(new java.awt.Color(149, 177, 182));
@@ -73,49 +77,50 @@ public class Entrance extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel3.setText("User type");
+        jLabel3.setText("User type:");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(90, 228, 93, 17);
+        jLabel3.setBounds(100, 300, 93, 17);
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel4.setText("Account");
+        jLabel4.setText("User ID: ");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(90, 287, 93, 17);
-
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel5.setText("Password");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(90, 348, 93, 17);
+        jLabel4.setBounds(100, 360, 93, 17);
 
         jComboBoxUserType.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jComboBoxUserType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Patient", "Doctors", "Hospital Admins", "Community Admin", "System Admin" }));
         jPanel1.add(jComboBoxUserType);
-        jComboBoxUserType.setBounds(201, 225, 190, 23);
+        jComboBoxUserType.setBounds(210, 300, 190, 23);
 
         jTextFieldAccount.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jPanel1.add(jTextFieldAccount);
-        jTextFieldAccount.setBounds(201, 284, 190, 23);
+        jTextFieldAccount.setBounds(210, 360, 190, 23);
 
-        jPasswordFieldPassword.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jPasswordFieldPassword.setText("input ur code here");
-        jPanel1.add(jPasswordFieldPassword);
-        jPasswordFieldPassword.setBounds(201, 345, 190, 23);
-
-        jButton1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jButton1.setText("Login");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonlogin.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jButtonlogin.setText("Login");
+        jButtonlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonloginActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(169, 445, 185, 40);
+        jPanel1.add(jButtonlogin);
+        jButtonlogin.setBounds(169, 445, 185, 40);
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Don't have account? Sign in here!");
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(169, 514, 192, 17);
+        jLabelSignUP.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabelSignUP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelSignUP.setText("Don't have account? Sign up here!");
+        jLabelSignUP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelSignUPMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelSignUPMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelSignUPMouseExited(evt);
+            }
+        });
+        jPanel1.add(jLabelSignUP);
+        jLabelSignUP.setBounds(169, 514, 189, 17);
         jPanel1.add(jLabelLogo);
         jLabelLogo.setBounds(80, 90, 340, 70);
         ImageIcon logoHospital = new ImageIcon("src//image//Logo.png");
@@ -144,17 +149,60 @@ public class Entrance extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonloginActionPerformed
         try {
             // TODO add your handling code here:
+            if(jTextFieldAccount.getText().isEmpty()){
+                JOptionPane.showMessageDialog(rootPane, "Please input your id!");
+                return;
+            }
+            switch (jComboBoxUserType.getSelectedIndex()) {
+                case 0: 
+                    PatientDao pDao = new PatientDao();
+                    if(pDao.isExist(Integer.parseInt(jTextFieldAccount.getText()))) break;
+                    else  JOptionPane.showMessageDialog(rootPane, "Account doesn't exist!");
+                            
+                    
+                    return;
+                case 1:
+                    DoctorDao dDao = new DoctorDao();
+                    if(dDao.isExist(Integer.parseInt(jTextFieldAccount.getText()))) break;
+                    else  JOptionPane.showMessageDialog(rootPane, "Account doesn't exist!");
+                    
+                    return;
+                case 2:
+                    
+                    break;    
+                case 3:
+                    
+                    break;    
+                    
+                default:
+                    break;
+            }
             MainMenu menu = new MainMenu();
-            System.out.println(jComboBoxUserType.getSelectedIndex());
             menu.MainMenu(jComboBoxUserType.getSelectedIndex(),Integer.parseInt(jTextFieldAccount.getText()));
             dispose();
         } catch (Exception ex) {
             Logger.getLogger(Entrance.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonloginActionPerformed
+
+    private void jLabelSignUPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSignUPMouseEntered
+        // TODO add your handling code here:
+        jLabelSignUP.setForeground(new java.awt.Color(51,51,255));
+    }//GEN-LAST:event_jLabelSignUPMouseEntered
+
+    private void jLabelSignUPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSignUPMouseExited
+        // TODO add your handling code here:
+        jLabelSignUP.setForeground(new java.awt.Color(0,0,0));
+    }//GEN-LAST:event_jLabelSignUPMouseExited
+
+    private void jLabelSignUPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSignUPMouseClicked
+        // TODO add your handling code here:
+        AddPatientJFrame add = new AddPatientJFrame();
+        add.setVisible(true);
+    }//GEN-LAST:event_jLabelSignUPMouseClicked
 
     /**     * @param args the command line arguments
      */
@@ -176,18 +224,16 @@ public class Entrance extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonlogin;
     private javax.swing.JComboBox<String> jComboBoxUserType;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabelLogo;
+    private javax.swing.JLabel jLabelSignUP;
     private javax.swing.JLabel jLabelSlogan;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordFieldPassword;
     private javax.swing.JTextField jTextFieldAccount;
     // End of variables declaration//GEN-END:variables
 }

@@ -225,6 +225,25 @@ public class DoctorDao {
         return res;
     }
     
+    public  boolean isExist(int id) throws Exception{
+
+        initConnection();
+        String sql = "SELECT doctor_id FROM doctorlist WHERE doctor_id=?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, id+"");
+        ResultSet rs = ps.executeQuery();
+
+        //must have while(rs.next()){}
+        if(rs.next()){
+            closeConnection();
+            return true;
+        }
+
+        closeConnection();
+
+        return false;
+    }
+    
 	
     public void closeConnection() throws Exception{
         conn.close();
