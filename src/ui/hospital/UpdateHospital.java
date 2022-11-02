@@ -26,10 +26,10 @@ public class UpdateHospital extends javax.swing.JFrame {
     HospitalDao hDao;
     ArrayList<String> communityNames;
     public UpdateHospital(int hospitalId) throws Exception {
-        initComponents();
         CommunityDao communityDao= new CommunityDao();
-        communityNames = new ArrayList<String>();
         communityNames = communityDao.getCommunityNames();
+        initComponents();
+        
         //加一个刷新community combobox 
         hDao = new HospitalDao();
         hospital = hDao.getHospitalById(hospitalId);
