@@ -41,6 +41,7 @@ Zeyu Liao, Ruolin Li, Ziyu Lu
  ![926f659cd50fe02ac1531841e85a9d3](https://user-images.githubusercontent.com/113488430/199385029-36a81eaf-09a3-41c9-95d7-b2dc06a608a3.png)
 
  ## Sequence Diagram
- ![sequense diagram-hospital](https://user-images.githubusercontent.com/113486280/199387611-15f25dd5-f783-41a6-9456-a3cb53a9b62a.png)
+ ![sequence diagram](https://user-images.githubusercontent.com/113486280/199388400-3245456b-43e1-4182-a446-922a32c6ee42.png)
+
 
  
